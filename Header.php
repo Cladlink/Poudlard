@@ -26,29 +26,14 @@
 					<!-- Right Nav Section -->
 					<ul class="left">
 						<li class="active"><a href="recherche.php">Recherche</a></li>
-						<li class="has-dropdown active">
-							<a href="#">Gestion des livres</a>
-							<ul class="dropdown">
-								<li><a href="ajouterLivre.php">Ajouter un livre</a></li>
-								<li><a href="supprimerLivre.php">Supprimer un livre</a></li>
-								<li><a href="#">Rechercher un livre</a></li>
-							</ul>
+						<li class="active">
+							<a href="gestionAdherents.php">Gestion des livres</a>
 						</li>
 						<li class="has-dropdown active">
-							<a href="#">Gestion des emprunts</a>
-							<ul class="dropdown">
-								<li><a href="ajouterEmprunt.php">Ajouter un emprunt</a></li>
-								<li><a href="rendreLivre.php">Rendre un livre</a></li>
-								<li><a href="empruntsEnCours.php">Emprunts en cours</a></li>
-							</ul>
+							<a href="gestionEmprunts.php">Gestion des emprunts</a>
 						</li>
 						<li class="has-dropdown active">
-							<a href="#">Gestion des adhérents</a>
-							<ul class="dropdown">
-								<li><a href="ajouterAdherent.php">Ajouter un adhérent</a></li>
-								<li><a href="supprimerAdherent.php">Supprimer un adhérent</a></li>
-								<li><a href="rechercherAdherent.php">Rechercher un adhérent</a></li>
-							</ul>
+							<a href="gestionAdherents.php">Gestion des adhérents</a>
 						</li>
 					</ul>
 				</section>
