@@ -12,7 +12,7 @@
                     if(!empty($_POST['nomAdherent'])
                         || !empty($_POST['adresseAdherent']))
                     {
-                        $where = "WHERE";
+                        $where = "WHERE ";
                         if(!empty($_POST['nomAdherent']))
                                 $where = $where . "ADHERENT.nomAdherent like \"%" . $_POST['nomAdherent'] . "%\" ";
 
