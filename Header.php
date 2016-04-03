@@ -29,22 +29,25 @@
 						<li class="has-dropdown active">
 							<a href="#">Gestion des livres</a>
 							<ul class="dropdown">
-								<li><a href="#">Ajouter un livre</a></li>
-								<li><a href="#">Supprimer un livre</a></li>
+								<li><a href="ajouterLivre.php">Ajouter un livre</a></li>
+								<li><a href="supprimerLivre.php">Supprimer un livre</a></li>
+								<li><a href="#">Rechercher un livre</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown active">
 							<a href="#">Gestion des emprunts</a>
 							<ul class="dropdown">
-								<li><a href="#">Ajouter un emprunt</a></li>
-								<li><a href="#">Ajouter un rendu</a></li>
+								<li><a href="ajouterEmprunt.php">Ajouter un emprunt</a></li>
+								<li><a href="rendreLivre.php">Rendre un livre</a></li>
+								<li><a href="empruntsEnCours.php">Emprunts en cours</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown active">
 							<a href="#">Gestion des adhérents</a>
 							<ul class="dropdown">
-								<li><a href="#">Ajouter un adhérent</a></li>
-								<li><a href="#">Supprimer un adhérent</a></li>
+								<li><a href="ajouterAdherent.php">Ajouter un adhérent</a></li>
+								<li><a href="supprimerAdherent.php">Supprimer un adhérent</a></li>
+								<li><a href="rechercherAdherent.php">Rechercher un adhérent</a></li>
 							</ul>
 						</li>
 					</ul>
