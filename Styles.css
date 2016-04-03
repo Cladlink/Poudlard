@@ -1,0 +1,169 @@
+@font-face {
+	font-family: 'jorvik';
+	src: url('font/jorvik.ttf') format('truetype');
+}
+/*			MENU
+				BALISE
+				article, footer
+				footer
+				h1
+				h2
+				header
+				p
+			Class
+				.active
+				.arrondi
+				.Contact
+				.Contact li
+				.Contact label img
+				.Contact input[type="radio"]
+				.Contact input[type="radio"]:checked + label img
+				.Contact span
+				.ContactD
+				.Contact textarea
+				.panel
+				.question
+				.reponse
+
+*/
+body{
+	font-family:  Arial, sans-serif !important;
+	background-color: #cacaca;
+}
+article, footer {
+	margin: 0 auto;
+	padding: 0.5% 1%;
+	margin-top: 2%;
+}
+footer, .menu {
+	background-color: #221122;
+	color: #FFFFFF;
+}
+h1 {
+	text-align: center;
+	font-family: jorvik;
+	font-size: 40px;
+}
+h2 {
+	text-align: left;
+	font-family: jorvik;
+	font-size: 50px;
+}
+
+h3 {
+	text-align: left;
+	font-family: jorvik;
+	font-size: 35px;
+}
+header {
+	margin-top: 3%;
+	text-align: center;
+}
+p {
+	text-align: justify;
+	text-indent: 6%;
+}
+table{
+	border: 1px #000000 solid;
+	display: inline;
+}
+.active{
+	border-left: #FFFFFF 1px solid;
+	border-right: #FFFFFF 1px solid;
+	list-style-type: none;
+}
+
+.arrondi{
+ 	border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px;
+ }
+ .textCenter{
+ 	text-align:center;
+ }
+.Contact{
+	display: inline-block;
+	text-align: center;
+	width: 80%;
+}
+.Contact li{
+	display: inline-block;
+	vertical-align: top;
+}
+.Contact label img{
+	border: 5px black groove;
+	border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px;
+	padding: 2px;
+}
+.Contact input[type="radio"]{
+	display:none;
+}
+.Contact input[type="radio"]:checked + label img{
+	border: #221122 5px groove;
+	border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px;
+}
+.Contact span{
+	display: inline-block;
+	vertical-align: top;
+}
+.ContactD{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+}
+.ContactD textarea{
+	height: 150px;
+}
+.imageSlide{
+	width:100%;
+}
+.panel{
+ 	border: 1px #888888 solid;
+ 	border-radius: 10px 10px 10px 10px; -webkit-border-radius: 10px 10px 10px 10px; -moz-border-radius: 10px 10px 10px 10px;
+ 	box-shadow: 5px 5px 5px #888888;
+}
+/* Interview */
+.question{
+ 	font-weight: bold;
+}
+.reponse{
+	text-align: justify;
+}
+.active a{
+    -webkit-transition: background 1s;
+    transition: background 1s;
+}
+
+.active a:hover {
+	background-color: #221122 !important;
+}
+.scrollToTop{
+	display: none;
+}
+@media only screen and (min-width: 82em) {
+	.scrollToTop{
+		width:160px; 
+		padding:10px; 
+		text-align:center; 
+		font-weight: bold;
+		color: #444;
+		text-decoration: none;
+		position:fixed;
+		top:100px;
+		left:20px;
+		font-size: 15px;
+		display: inline;
+	}
+	.scrollToTop:hover{
+		text-decoration:none;
+	}
+	.scroll{
+		width:100px; 
+		text-decoration: none;
+		position:fixed;
+		bottom:75px;
+		right:40px;
+		display:none;
+	}
+	.scroll:hover{
+		text-decoration:none;
+	}
+}
