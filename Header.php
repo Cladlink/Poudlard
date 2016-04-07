@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="fr">
+
 	<head>
 		<title>Bibliothèque de Poudlard</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,10 +9,10 @@
 		<link rel="stylesheet" href="css/foundation.min.css" />
 		<link rel="stylesheet" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="Styles.css" />
-		<link rel="icon" href="img/favicon.png" />
-
+		<link rel="icon" href="img/favicon.ico" />
 		<script src="js/vendor/modernizr.js"></script>
 	</head>
+
 	<body>
 		<div class="fixed" >
 			<nav class="top-bar" data-topbar role="navigation">
@@ -23,17 +24,25 @@
 				</ul>	
 
 				<section class="top-bar-section">
-					<!-- Right Nav Section -->
 					<ul class="left">
 						<li class="active"><a href="recherche.php">Recherche</a></li>
 						<li class="active">
-							<a href="gestionAdherents.php">Gestion des livres</a>
+							<a href="rechercheAdherents.php">Gestion des livres</a>
 						</li>
 						<li class="has-dropdown active">
-							<a href="gestionEmprunts.php">Gestion des emprunts</a>
+							<a href="#">Gestion des emprunts</a>
+							<ul class="dropdown">
+								<li><a href="empruntLivre.php">Emprunter un livre</a></li>
+								<li><a href="rendreLivre.php">Rendre un livre</a></li>
+								<li><a href="listeEmprunts.php">Liste des emprunts</a></li>
+							</ul>
 						</li>
 						<li class="has-dropdown active">
-							<a href="gestionAdherents.php">Gestion des adhérents</a>
+							<a href="#">Gestion des adhérents</a>
+							<ul class="dropdown">
+								<li><a href="ajouterAdherent.php">ajouter un adhérent</a></li>
+								<li><a href="rechercheAdherents.php">rechercher un adhérent</a></li>
+							</ul>
 						</li>
 					</ul>
 				</section>

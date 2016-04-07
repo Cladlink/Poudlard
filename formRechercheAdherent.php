@@ -38,7 +38,7 @@
                         <thead>
                         <th>ID Adherent</th>
                         <th>Nom Adherent</th>
-                        <th>Prenom Adherent</th>
+                        <th>Adresse Adherent</th>
                         <th>Date de paiement</th>
                         </thead>
                         <?php foreach ($donnees as $row) :
