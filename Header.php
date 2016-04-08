@@ -26,9 +26,7 @@
 				<section class="top-bar-section">
 					<ul class="left">
 						<li class="active"><a href="recherche.php">Recherche</a></li>
-						<li class="active">
-							<a href="rechercheAdherents.php">Gestion des livres</a>
-						</li>
+
 						<li class="has-dropdown active">
 							<a href="#">Gestion des emprunts</a>
 							<ul class="dropdown">
@@ -37,13 +35,35 @@
 								<li><a href="listeEmprunts.php">Liste des emprunts</a></li>
 							</ul>
 						</li>
+
+						<li class="active">
+							<a href="rechercheAdherents.php">Gestion des livres</a>
+						</li>
+
 						<li class="has-dropdown active">
 							<a href="#">Gestion des adhérents</a>
 							<ul class="dropdown">
-								<li><a href="ajouterAdherent.php">ajouter un adhérent</a></li>
+								<li><a href="gestionAdherent.php">ajouter un adhérent</a></li>
 								<li><a href="rechercheAdherents.php">rechercher un adhérent</a></li>
 							</ul>
 						</li>
+
+						<li class="has-dropdown active">
+							<a href="#">Gestion des auteurs</a>
+							<ul class="dropdown">
+								<li><a href="gestionAdherent.php">ajouter un auteur</a></li>
+								<li><a href="rechercheAdherents.php">rechercher un aauteur</a></li>
+							</ul>
+						</li>
+
+						<li class="has-dropdown active">
+							<a href="#">Gestion des exemplaires</a>
+							<ul class="dropdown">
+								<li><a href="gestionAdherent.php">ajouter un exemplaire</a></li>
+								<li><a href="rechercheAdherents.php">rechercher un exemplaire</a></li>
+							</ul>
+						</li>
+
 					</ul>
 				</section>
 			</nav>
