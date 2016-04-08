@@ -19,6 +19,7 @@
         $message = 	"l'adherent " . $_POST['nomAdherent'] . " a bien été créé !";
     }
 
+
 ?>
 
 <?php if(isset($message)): ?>
