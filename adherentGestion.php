@@ -3,6 +3,7 @@
 /**
  * TODO ne pas oublié de :
  *      finir l'update
+ *      ajouter le bouton ajouter (+)
  *      prendre en compte le fait que pour supprimer un adherent, il faut vérifier si il a des emprunts en cours
  *      vérifier si les champs sont saisie (sauf pour la recherche)
  *      éviter l'injection
@@ -106,7 +107,7 @@
                             <td><?= $row['adresseAdherent']?></td>
                             <td><?= $row['datePaiementAdherent']?></td>
                             <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
-                            <td><a href="<?= $addrUpdate ?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></td>
+                            <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
