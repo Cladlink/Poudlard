@@ -31,9 +31,8 @@ body{
 	background-color: #cacaca;
 }
 article, footer {
-	margin: 0 auto;
+	margin: 2% auto 0;
 	padding: 0.5% 1%;
-	margin-top: 2%;
 }
 footer, .menu {
 	background-color: #221122;
@@ -41,18 +40,18 @@ footer, .menu {
 }
 h1 {
 	text-align: center;
-	font-family: jorvik;
+    font-family: jorvik, serif;
 	font-size: 60px;
 }
 h2 {
 	text-align: left;
-	font-family: jorvik;
+	font-family: jorvik, serif;
 	font-size: 45px;
 }
 
 h3 {
 	text-align: left;
-	font-family: jorvik;
+    font-family: jorvik, serif;
 	font-size: 35px;
 }
 header {
