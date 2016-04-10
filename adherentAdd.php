@@ -1,14 +1,15 @@
 <?php include "Header.php";
 
 // requete ajouter adherent
-if (isset($_POST['nomAdherent'])
+if (isset($_POST)
+    && isset($_POST['nomAdherent'])
     && isset($_POST['adresseAdherent'])
-    && isset($_POST['dateAdhesion']))
-{
+    && isset($_POST['dateAdhesion'])):
+
     if (!empty($_POST['nomAdherent'])
         && !empty($_POST['adresseAdherent'])
-        && !empty($_POST['dateAdhesion']))
-    {
+        && !empty($_POST['dateAdhesion'])):
+
 
         include "php/connexion.php";
 
@@ -26,9 +27,15 @@ if (isset($_POST['nomAdherent'])
 
         $message = 	"l'adherent " . $_POST['nomAdherent'] . " a bien été créé !";
         header('location: adherentGestion.php');
-    }
-}
-?>
+
+    else: ?>
+        <div data-alert class="alert-box alert">
+            Merci de saisir tous les champs !
+            <a href="#" class="close">&times;</a>
+        </div>
+    <?php
+    endif;
+endif; ?>
 <h1>Adherent</h1>
 <section>
     <div class="row">
@@ -43,7 +50,7 @@ if (isset($_POST['nomAdherent'])
                         <input type="text" placeholder="Adresse de l'adhérent" id="adresseAdherent" name="adresseAdherent">
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion">
+                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion"  value="<?=date("Y-m-d")?>" >
                     </div>
                 </div>
                 <button class="arrondi" type="submit">Ajouter</button>

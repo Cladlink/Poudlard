@@ -3,9 +3,7 @@
 /**
  * TODO ne pas oublié de :
  *      prendre en compte le fait que pour supprimer un adherent, il faut vérifier si il a des emprunts en cours
- *      vérifier si les champs sont saisie (sauf pour la recherche)
  *      éviter l'injection
- *      BONUS : message de confirmation
  *      BONUS : recherche à affichage dynamique
  *      BONUS : retravailler le bouton rajouter
  *
@@ -34,7 +32,7 @@
                         <input type="text" placeholder="Adresse de l'adhérent" id="adresseAdherent" name="adresseAdherent">
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion" value="<?=date("Y-m-d")?>">
+                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion">
                     </div>
                 </div>
                 <button class="arrondi" type="submit">Rechercher</button>
