@@ -3,8 +3,6 @@
 /**
  * TODO ne pas oublié de :
  *      prendre en compte le fait que pour supprimer un adherent, il faut vérifier si il a des emprunts en cours
- *      éviter l'injection
- *      BONUS : recherche à affichage dynamique
  *      BONUS : retravailler le bouton rajouter
  *
  */
@@ -58,21 +56,21 @@
                     {
                         $where = "WHERE ";
                         if(!empty($_POST['nomAdherent']))
-                            $where = $where . "ADHERENT.nomAdherent like \"%" . $_POST['nomAdherent'] . "%\" ";
+                            $where = $where . "ADHERENT.nomAdherent like \"%" . htmlentities($_POST['nomAdherent']) . "%\" ";
 
                         if(!empty($_POST['adresseAdherent']))
                         {
                             if ($where == "WHERE ")
-                                $where = $where . "ADHERENT.adresseAdherent like \"%" . $_POST['adresseAdherent'] . "%\" ";
+                                $where = $where . "ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
                             else
-                                $where = $where . "AND ADHERENT.adresseAdherent like \"%" . $_POST['adresseAdherent'] . "%\" ";
+                                $where = $where . "AND ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
                         }
                         if(!empty($_POST['dateAdhesion']))
                         {
                             if ($where == "WHERE ")
-                                $where = $where . "ADHERENT.datePaimentAdherent like \"%" . $_POST['dateAdhesion'] . "%\" ";
+                                $where = $where . "ADHERENT.datePaimentAdherent like \"%" . htmlentities($_POST['dateAdhesion']) . "%\" ";
                             else
-                                $where = $where . "AND ADHERENT.datePaimentAdherent like \"%" . $_POST['dateAdhesion'] . "%\" ";
+                                $where = $where . "AND ADHERENT.datePaimentAdherent like \"%" . htmlentities($_POST['dateAdhesion']) . "%\" ";
                         }
 
                     }
@@ -85,7 +83,6 @@
                                                 ADHERENT.datePaiementAdherent
                                         FROM    ADHERENT
                                 ". $where;
-                    echo $ma_commande_SQL;
                 }
                 else
                 {

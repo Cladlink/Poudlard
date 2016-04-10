@@ -14,18 +14,18 @@ if (isset($_POST)
         include "php/connexion.php";
 
         $ma_commande_SQL = "INSERT INTO ADHERENT VALUES (null, \""
-            . $_POST['nomAdherent']
+            . htmlentities($_POST['nomAdherent'])
             . "\", \""
-            . $_POST['adresseAdherent']
+            . htmlentities($_POST['adresseAdherent'])
             . "\", \""
-            . $_POST['dateAdhesion']
+            . htmlentities($_POST['dateAdhesion'])
             . "\");";
         if($ma_connexion_mysql!= NULL)
         {
             $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $message = 	"l'adherent " . $_POST['nomAdherent'] . " a bien été créé !";
+        $message = 	"l'adherent " . htmlentities($_POST['nomAdherent']) . " a bien été créé !";
         header('location: adherentGestion.php');
 
     else: ?>

@@ -13,16 +13,16 @@ if (isset($_POST['nomAdherent'])
         include "php/connexion.php";
 
         $ma_commande_SQL = "UPDATE ADHERENT
-                            SET nomAdherent = \"" . $_POST['nomAdherent'] . "\",
-                             adresseAdherent = \"". $_POST['adresseAdherent'] . "\",
-                             datePaiementAdherent = \"". $_POST['dateAdhesion']. "\"
-                            WHERE idAdherent = \"". $_GET['adherent']. "\";";
+                            SET nomAdherent = \"" . htmlentities($_POST['nomAdherent']) . "\",
+                             adresseAdherent = \"". htmlentities($_POST['adresseAdherent']) . "\",
+                             datePaiementAdherent = \"". htmlentities($_POST['dateAdhesion']) . "\"
+                            WHERE idAdherent = \"". htmlentities($_GET['adherent']) . "\";";
         if($ma_connexion_mysql!= NULL)
         {
             $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $message = 	"l'adherent " . $_POST['nomAdherent'] . " a bien été créé !";
+        $message = 	"l'adherent " . htmlentities($_POST['nomAdherent']) . " a bien été créé !";
         header('location: adherentGestion.php');
     }
 }
@@ -36,7 +36,7 @@ if (isset($_GET['adherent'])):
                             ADHERENT.adresseAdherent,
                             ADHERENT.datePaiementAdherent
                     FROM    ADHERENT
-                    WHERE   idAdherent = \"" . $_GET['adherent'] . "\";";
+                    WHERE   idAdherent = \"" . htmlentities($_GET['adherent']) . "\";";
 
 
         include "php/connexion.php";
