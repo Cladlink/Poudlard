@@ -62,9 +62,10 @@ p {
 	text-align: justify;
 	text-indent: 6%;
 }
-table{
-	border: 1px #000000 solid;
-	display: inline;
+td
+{
+	width: 80px;
+	margin: auto;
 }
 .active{
 	border-left: #FFFFFF 1px solid;

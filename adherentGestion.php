@@ -2,12 +2,12 @@
 
 /**
  * TODO ne pas oublié de :
- *      ajouter le bouton ajouter (+)
  *      prendre en compte le fait que pour supprimer un adherent, il faut vérifier si il a des emprunts en cours
  *      vérifier si les champs sont saisie (sauf pour la recherche)
  *      éviter l'injection
  *      BONUS : message de confirmation
  *      BONUS : recherche à affichage dynamique
+ *      BONUS : retravailler le bouton rajouter
  *
  */
 ?>
@@ -21,6 +21,7 @@
     </div>
 <?php endif ?>
 <section>
+    <h1>Gestion des adherents</h1>
     <div class="row">
         <article class="panel large-12 medium-12 small-12 columns" >
             <h2>Rechercher un adhérent</h2>
@@ -33,7 +34,7 @@
                         <input type="text" placeholder="Adresse de l'adhérent" id="adresseAdherent" name="adresseAdherent">
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion">
+                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion" value="<?=date("Y-m-d")?>">
                     </div>
                 </div>
                 <button class="arrondi" type="submit">Rechercher</button>
@@ -45,12 +46,13 @@
     <section>
         <div class="row">
             <article class=" panel large-12 medium-12 small-12 columns">
-                <img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/>
+                <a href="adherentAdd.php"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
                 <h2 >Liste des adhérents</h2>
                 <?php
                 if(isset($_POST)
                     && isset($_POST['nomAdherent'])
-                    && isset($_POST['adresseAdherent']))
+                    && isset($_POST['adresseAdherent'])
+                    && isset($_POST['dateAdhesion']))
                 {
 
                     if(!empty($_POST['nomAdherent'])
@@ -61,11 +63,20 @@
                             $where = $where . "ADHERENT.nomAdherent like \"%" . $_POST['nomAdherent'] . "%\" ";
 
                         if(!empty($_POST['adresseAdherent']))
-
-                            if ($where == "WHERE")
+                        {
+                            if ($where == "WHERE ")
                                 $where = $where . "ADHERENT.adresseAdherent like \"%" . $_POST['adresseAdherent'] . "%\" ";
                             else
-                                $where = $where . "AND ADHERENT.nomAdherent like \"%" . $_POST['nomAdherent'] . "%\" ";
+                                $where = $where . "AND ADHERENT.adresseAdherent like \"%" . $_POST['adresseAdherent'] . "%\" ";
+                        }
+                        if(!empty($_POST['dateAdhesion']))
+                        {
+                            if ($where == "WHERE ")
+                                $where = $where . "ADHERENT.datePaimentAdherent like \"%" . $_POST['dateAdhesion'] . "%\" ";
+                            else
+                                $where = $where . "AND ADHERENT.datePaimentAdherent like \"%" . $_POST['dateAdhesion'] . "%\" ";
+                        }
+
                     }
                     include "php/connexion.php";
 
@@ -76,6 +87,7 @@
                                                 ADHERENT.datePaiementAdherent
                                         FROM    ADHERENT
                                 ". $where;
+                    echo $ma_commande_SQL;
                 }
                 else
                 {

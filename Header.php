@@ -26,11 +26,11 @@
 				<section class="top-bar-section">
 					<ul class="left">
 						<li class="active"><a href="recherche.php">Recherche</a></li>
-						<li class="active"><a href="#">Emprunts</a></li>
-						<li class="active"><a href="adherentGestion.php">Livres</a></li>
-						<li class="active"><a href="#">Adhérents</a></li>
-						<li class="active"><a href="#">Auteurs</a></li>
-						<li class="active"><a href="#">Exemplaires</a></li>
+						<li class="active"><a href="#">Emprunt</a></li>
+						<li class="active"><a href="#">Livre</a></li>
+						<li class="active"><a href="adherentGestion.php">Adhérent</a></li>
+						<li class="active"><a href="#">Auteur</a></li>
+						<li class="active"><a href="#">Exemplaire</a></li>
 					</ul>
 				</section>
 			</nav>
