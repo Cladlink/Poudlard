@@ -5,6 +5,7 @@ if (isset($_GET['adherent']))
     {
         include "php/connexion.php";
 
+
         $ma_commande_SQL = "DELETE FROM ADHERENT
                             WHERE idAdherent = \"" . $_GET['adherent'] . "\";";
         if($ma_connexion_mysql!= NULL)
