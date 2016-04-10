@@ -1,4 +1,6 @@
-<?php include "Header.php";
+<?php
+session_start();
+include "Header.php";
 include "php/connexion.php";
 
 // requete ajouter adherent

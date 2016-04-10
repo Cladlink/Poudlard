@@ -1,4 +1,6 @@
-<?php include "Header.php";
+<?php
+session_start();
+include "Header.php";
 
 // requete ajouter adherent
 if (isset($_POST)
