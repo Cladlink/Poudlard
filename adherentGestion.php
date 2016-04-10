@@ -101,14 +101,14 @@ endif; ?>
                     $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
                     $donnees = $reponse->fetchAll();?>
                     <table>
-                        <thead>
+                        <tr>
                         <th>ID Adherent</th>
                         <th>Nom Adherent</th>
                         <th>Adresse Adherent</th>
                         <th>Date de paiement</th>
                         <th>modifier</th>
                         <th>supprimer</th>
-                        </thead>
+                        </tr>
                         <?php foreach ($donnees as $row) :
                             $addrUpdate = "adherentUpdate.php?adherent=" . $row['idAdherent'];
                             $addrDelete = "adherentSupprimer.php?adherent=" . $row['idAdherent'];

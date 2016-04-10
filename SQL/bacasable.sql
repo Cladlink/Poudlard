@@ -8,3 +8,11 @@ FROM EMPRUNT
     ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
 WHERE EMPRUNT.dateRendu IS NULL
 ORDER BY ADHERENT.nomAdherent;
+
+UPDATE EMPRUNT
+SET EMPRUNT.dateRendu = now()
+WHERE EMPRUNT.idExemplaire = 2
+AND EMPRUNT.idAdherent = 6
+AND EMPRUNT.dateRendu like '2015-09-28';
+
+Select * FROM emprunt;

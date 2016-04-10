@@ -38,12 +38,12 @@ if (isset($_POST)
         <?php
     endif;
 endif; ?>
-    <h1>Adherent</h1>
+    <h1>Emprunts</h1>
     <section>
         <div class="row">
             <article class="panel large-12 medium-12 small-12 columns" >
-                <h2>Ajouter un adhérent</h2>
-                <form action="adherentAdd.php" method="post">
+                <h2>Prêt d'un livre</h2>
+                <form action="empruntAdd.php" method="post">
                     <div class="row">
                         <div class="large-4 medium-4 small-4 columns">
                             <input type="text" placeholder="Nom de l'adherent" id="nomAdherent" name="nomAdherent">

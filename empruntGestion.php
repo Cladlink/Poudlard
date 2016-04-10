@@ -87,7 +87,7 @@ endif; ?>
                     include "php/connexion.php";
 
 
-                    $ma_commande_SQL = "SELECT ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
+                    $ma_commande_SQL = "SELECT EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
                                         FROM EMPRUNT
                                         JOIN ADHERENT
                                           ON EMPRUNT.idAdherent = ADHERENT.idAdherent
@@ -101,7 +101,7 @@ endif; ?>
                 }
                 else
                 {
-                    $ma_commande_SQL = "SELECT ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
+                    $ma_commande_SQL = "SELECT EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
                                         FROM EMPRUNT
                                         JOIN ADHERENT
                                           ON EMPRUNT.idAdherent = ADHERENT.idAdherent
@@ -120,15 +120,20 @@ endif; ?>
                 ?>
 
                 <table>
-                    <thead>
+                    <tr>
                     <th>Nom Adherent</th>
                     <th>Livre emprunté</th>
                     <th>Date d'emprunt</th>
                     <th>Date de rendu maxi</th>
-                    </thead>
+                    </tr>
 
                     <?php foreach ($donnees as $row) :
-                        $addRendu = "empruntSupprimer.php?adherent=" . $row['idAdherent'];
+                        $addRendu = "empruntRendu.php?adherent="
+                            . $row['idAdherent']
+                            ."&exemplaire="
+                            . $row['idExemplaire']
+                            ."&dateEmprunt="
+                            . $row['dateEmprunt'];
                         ?><tr>
                         <td><?= $row['nomAdherent']; ?></td>
                         <td><?= $row['titreOeuvre']; ?></td>
