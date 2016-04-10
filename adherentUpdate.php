@@ -24,7 +24,7 @@ if (isset($_POST['nomAdherent'])
             $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $message = 	"l'adherent " . htmlentities($_POST['nomAdherent']) . " a bien été créé !";
+        $_SESSION['message'] = 	"l'adherent " . htmlentities($_POST['nomAdherent']) . " a bien été mis à jour !";
         header('location: adherentGestion.php');
     }
 }

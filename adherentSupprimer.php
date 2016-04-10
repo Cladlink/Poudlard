@@ -23,14 +23,14 @@ if (isset($_GET['adherent']))
                             WHERE idAdherent = \"" . htmlentities($_GET['adherent']) . "\";";
             if($ma_connexion_mysql!= NULL)
                 $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
-            $message = 	"l'adherent " . htmlentities($_POST['nomAdherent']) . " a bien été créé !";
+            $_SESSION['message'] = 	"l'adherent a bien été supprimé !";
         }
         else
         {
-            echo "Ne peut être supprimé car des emprunts sont encore en cours ! ";
+            $_SESSION['messageError'] = "Ne peut être supprimé car des emprunts sont encore en cours ! ";
         }
 
 
-        header('location: adherentGestion.php', true, 100);
+        header('location: adherentGestion.php');
     }
 }

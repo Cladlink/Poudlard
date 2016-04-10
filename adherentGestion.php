@@ -1,19 +1,24 @@
 <?php
-session_start();
-/**
- * TODO ne pas oublié de :
- *      faire passer un message pour les requetes
- */
-?>
+session_start(); ?>
 
 <?php include "Header.php";?>
 
-<?php if(isset($message)): ?>
+<?php if(isset( $_SESSION['message'])): ?>
     <div data-alert class="alert-box success radius">
-        <?php echo $message; ?>
+        <?php echo $_SESSION['message']; ?>
         <a href="#" class="close">&times;</a>
     </div>
-<?php endif ?>
+    <?php
+    unset( $_SESSION['message']);
+endif;
+if(isset( $_SESSION['messageError'])): ?>
+    <div data-alert class="alert-box alert success radius">
+        <?php echo $_SESSION['messageError']; ?>
+        <a href="#" class="close">&times;</a>
+    </div>
+    <?php
+    unset( $_SESSION['messageError']);
+endif; ?>
 <section>
     <h1>Gestion des adherents</h1>
     <div class="row">
