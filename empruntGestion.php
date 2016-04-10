@@ -2,8 +2,6 @@
 /**
  * todo
  *      permettre les emprunts (faire liste déroulante des adherents dans un select puis pareil pour livre
- *      gérer les rendus de livre
- *      faire un historique
  *      empécher les emprunts si un livre est emprunté depuis plus de 1mois
  *      limiter les emprunts à deux livres maxi
  *

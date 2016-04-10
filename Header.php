@@ -26,7 +26,12 @@
 				<section class="top-bar-section">
 					<ul class="left">
 						<li class="active"><a href="recherche.php">Recherche</a></li>
-						<li class="active"><a href="empruntGestion.php">Emprunt</a></li>
+						<li class="has-dropdown active"><a href="#">Emprunt</a>
+						<ul class="dropdown">
+							<li class="active"><a  href="empruntGestion.php">Emprunts / rendus</a></li>
+							<li class="active"><a href="empruntHistorique.php">Historique</a></li>
+						</ul>
+						</li>
 						<li class="active"><a href="livreGestion.php">Livre</a></li>
 						<li class="active"><a href="adherentGestion.php">Adhérent</a></li>
 						<li class="active"><a href="auteurGestion.php">Auteur</a></li>
