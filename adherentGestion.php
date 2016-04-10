@@ -2,7 +2,6 @@
 
 /**
  * TODO ne pas oublié de :
- *      finir l'update
  *      ajouter le bouton ajouter (+)
  *      prendre en compte le fait que pour supprimer un adherent, il faut vérifier si il a des emprunts en cours
  *      vérifier si les champs sont saisie (sauf pour la recherche)
@@ -45,8 +44,9 @@
 
     <section>
         <div class="row">
-            <article class="panel large-12 medium-12 small-12 columns">
-                <h2>Liste des adhérents</h2>
+            <article class=" panel large-12 medium-12 small-12 columns">
+                <img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/>
+                <h2 >Liste des adhérents</h2>
                 <?php
                 if(isset($_POST)
                     && isset($_POST['nomAdherent'])

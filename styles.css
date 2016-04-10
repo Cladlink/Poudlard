@@ -111,6 +111,11 @@ table{
 .ContactD textarea{
 	height: 150px;
 }
+.imagePlus{
+	position: absolute;
+	right: 10px;
+	top: 20px;
+}
 .imageSlide{
 	width:100%;
 }

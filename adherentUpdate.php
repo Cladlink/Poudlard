@@ -9,16 +9,14 @@ if (isset($_POST['nomAdherent'])
         && !empty($_POST['adresseAdherent'])
         && !empty($_POST['dateAdhesion']))
     {
-
+        echo "coucou";
         include "php/connexion.php";
 
-        $ma_commande_SQL = "INSERT INTO ADHERENT VALUES (null, \""
-            . $_POST['nomAdherent']
-            . "\", \""
-            . $_POST['adresseAdherent']
-            . "\", \""
-            . $_POST['dateAdhesion']
-            . "\");";
+        $ma_commande_SQL = "UPDATE ADHERENT
+                            SET nomAdherent = \"" . $_POST['nomAdherent'] . "\",
+                             adresseAdherent = \"". $_POST['adresseAdherent'] . "\",
+                             datePaiementAdherent = \"". $_POST['dateAdhesion']. "\"
+                            WHERE idAdherent = \"". $_GET['adherent']. "\";";
         if($ma_connexion_mysql!= NULL)
         {
             $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
@@ -28,27 +26,52 @@ if (isset($_POST['nomAdherent'])
         header('location: adherentGestion.php');
     }
 }
-?>
-    <h1>Adherent</h1>
-    <section>
-        <div class="row">
-            <article class="panel large-12 medium-12 small-12 columns" >
-                <h2>modifier un adhérent</h2>
-                <form action="adherentAdd.php" method="post">
-                    <div class="row">
-                        <div class="large-4 medium-4 small-4 columns">
-                            <input type="text" placeholder="Nom de l'adherent" id="nomAdherent" name="nomAdherent">
+if (isset($_GET['adherent'])):
+
+    if (!empty($_GET['adherent'])):
+
+        include "php/connexion.php";
+
+        $ma_commande_SQL = "SELECT  ADHERENT.nomAdherent,
+                            ADHERENT.adresseAdherent,
+                            ADHERENT.datePaiementAdherent
+                    FROM    ADHERENT
+                    WHERE   idAdherent = \"" . $_GET['adherent'] . "\";";
+
+
+        include "php/connexion.php";
+        $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
+        $donnees = $reponse->fetchAll();
+        ?>
+        <h1>Adherent</h1>
+        <section>
+            <div class="row">
+                <article class="panel large-12 medium-12 small-12 columns" >
+                    <h2>modifier un adhérent</h2>
+                    <form action="adherentUpdate.php?adherent=<?=$_GET['adherent'] ?>" method="post">
+                        <div class="row">
+                            <?php foreach ($donnees as $row ): ?>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <input type="text" placeholder="<?= $row['nomAdherent'] ?>" id="nomAdherent" name="nomAdherent" value="<?=$row['nomAdherent'] ?>">
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <input type="text" placeholder="<?=$row['adresseAdherent'] ?>" id="adresseAdherent" name="adresseAdherent" value="<?=$row['adresseAdherent'] ?>">
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <input type="date" placeholder="<?=$row['datePaiementAdherent'] ?>" id="dateAdhesion" name="dateAdhesion" value="<?=$row['datePaiementAdherent'] ?>">
+                            </div>
+                            <?php endforeach;?>
                         </div>
-                        <div class="large-4 medium-4 small-4 columns">
-                            <input type="text" placeholder="Adresse de l'adhérent" id="adresseAdherent" name="adresseAdherent">
-                        </div>
-                        <div class="large-4 medium-4 small-4 columns">
-                            <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion">
-                        </div>
-                    </div>
-                    <button class="arrondi" type="submit">Ajouter</button>
-                </form>
-            </article>
-        </div>
-    </section>
-<?php include "Footer.php";
+                        <button class="arrondi" type="submit">Ajouter</button>
+                    </form>
+                </article>
+            </div>
+        </section>
+        <?php
+    endif;
+else:
+{
+    header('location: adherentGestion.php');
+}
+endif;
+include "Footer.php";
