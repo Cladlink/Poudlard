@@ -1,4 +1,5 @@
 <?php include "Header.php";
+include "php/connexion.php";
 
 // requete ajouter adherent
 if (isset($_POST['nomAdherent'])
@@ -10,7 +11,6 @@ if (isset($_POST['nomAdherent'])
         && !empty($_POST['dateAdhesion']))
     {
         echo "coucou";
-        include "php/connexion.php";
 
         $ma_commande_SQL = "UPDATE ADHERENT
                             SET nomAdherent = \"" . htmlentities($_POST['nomAdherent']) . "\",
@@ -30,7 +30,6 @@ if (isset($_GET['adherent'])):
 
     if (!empty($_GET['adherent'])):
 
-        include "php/connexion.php";
 
         $ma_commande_SQL = "SELECT  ADHERENT.nomAdherent,
                             ADHERENT.adresseAdherent,
@@ -38,8 +37,6 @@ if (isset($_GET['adherent'])):
                     FROM    ADHERENT
                     WHERE   idAdherent = \"" . htmlentities($_GET['adherent']) . "\";";
 
-
-        include "php/connexion.php";
         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
         $donnees = $reponse->fetchAll();
         ?>

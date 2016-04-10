@@ -1,10 +1,7 @@
 <?php
-
 /**
  * TODO ne pas oublié de :
- *      prendre en compte le fait que pour supprimer un adherent, il faut vérifier si il a des emprunts en cours
- *      BONUS : retravailler le bouton rajouter
- *
+ *      faire passer un message pour les requetes
  */
 ?>
 
@@ -41,10 +38,12 @@
 
     <section>
         <div class="row">
+            <?php if (isset($_SESSION['message'])): ?>
             <article class=" panel large-12 medium-12 small-12 columns">
-                <a href="adherentAdd.php"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
                 <h2 >Liste des adhérents</h2>
+                <a href="adherentAdd.php"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
                 <?php
+                endif;
                 if(isset($_POST)
                     && isset($_POST['nomAdherent'])
                     && isset($_POST['adresseAdherent'])
