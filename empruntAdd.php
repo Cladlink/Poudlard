@@ -17,7 +17,7 @@ if (isset($_POST)
                             WHERE emprunt.idAdherent = " . htmlentities($_POST['idAdherent']) . "
                               AND emprunt.dateRendu IS NULL
                             GROUP BY emprunt.idAdherent
-                            HAVING compte > 2;";
+                            HAVING compte >= 2;";
         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
         $donnees = $reponse->fetchAll();
         if($donnees)
@@ -92,7 +92,7 @@ if(isset( $_SESSION['messageError'])): ?>
                             </select>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
-                            <label for="idExemplaire">nom de l'adherent</label>
+                            <label for="idExemplaire">Titre du livre</label>
                             <select name="idExemplaire" id="idExemplaire">
                                 <?php
                                 $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre, exemplaire.idExemplaire
