@@ -5,24 +5,24 @@ include "php/connexion.php";
 
 if (isset($_POST)
     && isset($_POST['idAdherent'])
-    && isset($_POST['titreOeuvre'])):
+    && isset($_POST['idExemplaire'])):
 
     if (!empty($_POST['idAdherent'])
-        && !empty($_POST['titreOeuvre'])):
+        && !empty($_POST['idExemplaire'])):
 
         $ma_commande_SQL = "SELECT nomAdherent, count(*) as compte
                             FROM emprunt
                               JOIN adherent
                               ON adherent.idAdherent = emprunt.idAdherent
-                            WHERE emprunt.idAdherent = " . $_POST['idAdherent'] . "
+                            WHERE emprunt.idAdherent = " . htmlentities($_POST['idAdherent']) . "
                               AND emprunt.dateRendu IS NULL
                             GROUP BY emprunt.idAdherent
-                            HAVING compte < 2;";
+                            HAVING compte > 2;";
         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
         $donnees = $reponse->fetchAll();
-        if(!$donnees)
+        if($donnees)
         {
-            $_SESSION['messageError'] = "Ne peut emprunter de nouveaux livres car deux sont déjà en cours ! ";
+            $_SESSION['messageError'] = "Un adhérent ne peut emprunter plus de deux livres ! ";
         }
         else
         {
@@ -31,8 +31,8 @@ if (isset($_POST)
                                   JOIN ADHERENT
                                     ON EMPRUNT.idAdherent = ADHERENT.idAdherent
                                 WHERE EMPRUNT.dateRendu IS NULL
-                                  AND adherent.idAdherent =". $_POST['idAdherent'] ."
-                                HAVING dateRenduMax > dateEmprunt + 45
+                                  AND adherent.idAdherent =". htmlentities($_POST['idAdherent']) ."
+                                HAVING now() > dateRenduMax
                                 ORDER BY ADHERENT.nomAdherent;";
             $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
             $donnees = $reponse->fetchAll();
@@ -42,28 +42,20 @@ if (isset($_POST)
             }
             else
             {
-                // tester si le livre existe (requete 1)
-                // si un exemplaire est dispo (requete 2)
-                // valider le prêt
+            $ma_commande_SQL = "INSERT INTO EMPRUNT VALUES (\""
+            . htmlentities($_POST['idAdherent'])
+            . "\", \""
+            . htmlentities($_POST['idExemplaire'])
+            . "\", now(), null);";
+                if($ma_connexion_mysql!= NULL)
+                {
+                    $ma_connexion_mysql->exec($ma_commande_SQL);
+                }
+
+                $_SESSION['message'] = 	"Le prêt est bien enregistré !";
+                header('location: empruntGestion.php');
             }
         }
-
-
-        /*$ma_commande_SQL = "INSERT INTO  VALUES (null, \""
-            . htmlentities($_POST['nomAdherent'])
-            . "\", \""
-            . htmlentities($_POST['adresseAdherent'])
-            . "\", \""
-            . htmlentities($_POST['dateAdhesion'])
-            . "\");";*/
-        /*if($ma_connexion_mysql!= NULL)
-        {
-            $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
-        }*/
-
-        /*$_SESSION['message'] = 	"l'adherent " . htmlentities($_POST['nomAdherent']) . " a bien été créé !";
-        header('location: adherentGestion.php');*/
-
     else:
         $_SESSION['messageError'] = "Merci de saisir tous les champs !";
     endif;
@@ -100,8 +92,26 @@ if(isset( $_SESSION['messageError'])): ?>
                             </select>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
-                            <label for="titreOeuvre">Titre du livre</label>
-                            <input type="text" placeholder="Titre du livre" id="titreOeuvre" name="titreOeuvre">
+                            <label for="idExemplaire">nom de l'adherent</label>
+                            <select name="idExemplaire" id="idExemplaire">
+                                <?php
+                                $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre, exemplaire.idExemplaire
+                                                    FROM EXEMPLAIRE
+                                                      JOIN OEUVRE ON exemplaire.idOeuvre = oeuvre.idOeuvre
+                                                    WHERE exemplaire.idExemplaire NOT IN
+                                                          (
+                                                            SELECT exemplaire.idExemplaire
+                                                            FROM emprunt
+                                                              JOIN exemplaire ON emprunt.idExemplaire = exemplaire.idExemplaire
+                                                            WHERE dateRendu IS NULL
+                                                          )
+                                                    GROUP BY Oeuvre.titreOeuvre;";
+                                $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
+                                $donnees = $reponse->fetchAll();
+                                foreach($donnees as $row): ?>
+                                    <option value="<?= $row['idExemplaire']?>"><?= $row['titreOeuvre']?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
                     <button class="arrondi" type="submit">Ajouter</button>

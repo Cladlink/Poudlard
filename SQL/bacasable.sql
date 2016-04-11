@@ -34,3 +34,32 @@ WHERE EMPRUNT.dateRendu IS NULL
   AND adherent.idAdherent = 1
 HAVING dateRenduMax > dateEmprunt + 45
 ORDER BY ADHERENT.nomAdherent;
+
+SELECT OEUVRE.titreOEUVRE
+FROM oeuvre
+JOIN exemplaire
+ON oeuvre.idOeuvre = exemplaire.idOeuvre
+WHERE idExemplaire;
+
+  SELECT OEUVRE.titreOeuvre,
+    COUNT(exemplaire.idExemplaire) as exemplaire_Restant
+  FROM EXEMPLAIRE
+    JOIN OEUVRE ON exemplaire.idOeuvre = oeuvre.idOeuvre
+  WHERE exemplaire.idExemplaire NOT IN
+        (
+          SELECT exemplaire.idExemplaire
+          FROM emprunt
+            JOIN exemplaire ON emprunt.idExemplaire = exemplaire.idExemplaire
+          WHERE dateRendu IS NULL
+        )
+  GROUP BY Oeuvre.titreOeuvre;
+
+SELECT * FROM adherent;
+SELECT nomAdherent, count(*) as compte
+FROM emprunt
+  JOIN adherent
+    ON adherent.idAdherent = emprunt.idAdherent
+WHERE emprunt.idAdherent = 38
+      AND emprunt.dateRendu IS NULL
+GROUP BY emprunt.idAdherent
+HAVING compte > 2;
