@@ -16,3 +16,12 @@ AND EMPRUNT.idAdherent = 6
 AND EMPRUNT.dateRendu like '2015-09-28';
 
 Select * FROM emprunt;
+
+SELECT nomAdherent, count(*) as compte
+FROM emprunt
+  JOIN adherent
+  ON adherent.idAdherent = emprunt.idAdherent
+WHERE emprunt.idAdherent = 14
+  AND emprunt.dateRendu IS NULL
+GROUP BY emprunt.idAdherent
+HAVING compte > 1;

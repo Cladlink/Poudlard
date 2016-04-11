@@ -3,7 +3,6 @@
  * todo
  *      permettre les emprunts (faire liste déroulante des adherents dans un select puis pareil pour livre
  *      empécher les emprunts si un livre est emprunté depuis plus de 1mois
- *      limiter les emprunts à deux livres maxi
  *
  */
 session_start(); ?>
@@ -34,8 +33,14 @@ endif; ?>
                 <form action="empruntGestion.php" method="post">
                     <div class="row">
                         <div class="large-4 medium-4 small-4 columns">
-                            <label for="nomAdherent">Nom de l'adherent</label>
-                            <input type="text" id="nomAdherent" name="nomAdherent">
+                            <div>
+                                <label for="nomAdherent">Nom de l'adherent</label>
+                                <input type="text" id="nomAdherent" name="nomAdherent">
+                            </div>
+                            <div>
+                                <label for="titreOeuvre">Titre du livre</label>
+                                <input type="text" id="titreOeuvre" name="titreOeuvre">
+                            </div>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
                             <label for="dateEmpruntMini">date Emprunt mini</label>
@@ -62,12 +67,14 @@ endif; ?>
                 if(isset($_POST)
                     && isset($_POST['nomAdherent'])
                     && isset($_POST['dateEmpruntMini'])
-                    && isset($_POST['dateEmpruntMaxi']))
+                    && isset($_POST['dateEmpruntMaxi'])
+                    && isset($_POST['titreOeuvre']))
                 {
 
                     if(!empty($_POST['nomAdherent'])
                         || !empty($_POST['dateEmpruntMini'])
-                        || !empty($_POST['dateEmpruntMaxi']))
+                        || !empty($_POST['dateEmpruntMaxi'])
+                        || !empty($_POST['titreOeuvre']))
                     {
                         $where = " ";
                         if(!empty($_POST['nomAdherent']))
@@ -80,6 +87,10 @@ endif; ?>
                         if(!empty($_POST['dateEmpruntMaxi']))
                         {
                             $where = $where . "AND EMPRUNT.dateEmprunt <= \"" . htmlentities($_POST['dateEmpruntMaxi']) . "\" ";
+                        }
+                        if(!empty($_POST['titreOeuvre']))
+                        {
+                            $where = $where . "AND OEUVRE.titreOeuvre like \"%" . htmlentities($_POST['titreOeuvre']) . "%\" ";
                         }
                     }
                     include "php/connexion.php";
