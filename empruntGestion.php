@@ -2,7 +2,6 @@
 /**
  * todo
  *      permettre les emprunts (faire liste déroulante des adherents dans un select puis pareil pour livre
- *      empécher les emprunts si un livre est emprunté depuis plus de 1mois
  *
  */
 session_start(); ?>

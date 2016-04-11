@@ -25,3 +25,12 @@ WHERE emprunt.idAdherent = 14
   AND emprunt.dateRendu IS NULL
 GROUP BY emprunt.idAdherent
 HAVING compte > 1;
+
+SELECT ADHERENT.nomAdherent, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
+FROM EMPRUNT
+  JOIN ADHERENT
+    ON EMPRUNT.idAdherent = ADHERENT.idAdherent
+WHERE EMPRUNT.dateRendu IS NULL
+  AND adherent.idAdherent = 1
+HAVING dateRenduMax > dateEmprunt + 45
+ORDER BY ADHERENT.nomAdherent;

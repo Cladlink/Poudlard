@@ -3,7 +3,6 @@ session_start();
 include "Header.php";
 include "php/connexion.php";
 
-// requete ajouter adherent
 if (isset($_POST)
     && isset($_POST['idAdherent'])
     && isset($_POST['titreOeuvre'])):
@@ -24,11 +23,29 @@ if (isset($_POST)
         if(!$donnees)
         {
             $_SESSION['messageError'] = "Ne peut emprunter de nouveaux livres car deux sont déjà en cours ! ";
-
         }
         else
         {
-
+            $ma_commande_SQL = "SELECT ADHERENT.nomAdherent, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
+                                FROM EMPRUNT
+                                  JOIN ADHERENT
+                                    ON EMPRUNT.idAdherent = ADHERENT.idAdherent
+                                WHERE EMPRUNT.dateRendu IS NULL
+                                  AND adherent.idAdherent =". $_POST['idAdherent'] ."
+                                HAVING dateRenduMax > dateEmprunt + 45
+                                ORDER BY ADHERENT.nomAdherent;";
+            $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
+            $donnees = $reponse->fetchAll();
+            if($donnees)
+            {
+                $_SESSION['messageError'] = "Ne peut emprunter de nouveaux livres un livre emprunté depuis plus de 45 jours ! ";
+            }
+            else
+            {
+                // tester si le livre existe (requete 1)
+                // si un exemplaire est dispo (requete 2)
+                // valider le prêt
+            }
         }
 
 
@@ -50,7 +67,7 @@ if (isset($_POST)
     else:
         $_SESSION['messageError'] = "Merci de saisir tous les champs !";
     endif;
-endif;?>
+endif; ?>
 
 <?php
 
