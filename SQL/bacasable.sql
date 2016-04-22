@@ -63,3 +63,8 @@ WHERE emprunt.idAdherent = 38
       AND emprunt.dateRendu IS NULL
 GROUP BY emprunt.idAdherent
 HAVING compte > 2;
+
+SELECT  AUTEUR.idAdherent,
+  AUTEUR.nomAdherent,
+  AUTEUR.adresseAdherent
+FROM    AUTEUR

@@ -67,10 +67,6 @@ endif; ?>
                             if ($where == "WHERE ")
                                 $where = $where . "ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
                             else
-                                $where = $where . "AND ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
-
-                        if(!empty($_POST['dateAdhesion']))
-
                             if ($where == "WHERE ")
                                 $where = $where . "ADHERENT.datePaimentAdherent like \"%" . htmlentities($_POST['dateAdhesion']) . "%\" ";
                             else

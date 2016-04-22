@@ -12,7 +12,6 @@ if (isset($_POST['nomAdherent'])
         && !empty($_POST['adresseAdherent'])
         && !empty($_POST['dateAdhesion']))
     {
-        echo "coucou";
 
         $ma_commande_SQL = "UPDATE ADHERENT
                             SET nomAdherent = \"" . htmlentities($_POST['nomAdherent']) . "\",
