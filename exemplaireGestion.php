@@ -3,7 +3,8 @@
 <section>
     <div class="row">
         <article class=" panel large-12 medium-12 small-12 columns">
-            <a href="livreAdd.php"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
+            <?php $addrAdd = "exemplaireAdd.php?oeuvre=" . $_GET['oeuvre']; ?>
+            <a href="<?= $addrAdd?>"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
             <h2 >Liste des exemplaires</h2>
             <?php
             if(isset($_GET['oeuvre'])):
