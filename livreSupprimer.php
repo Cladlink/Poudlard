@@ -10,8 +10,7 @@ if (isset($_GET['oeuvre']))
                             FROM EMPRUNT
                             JOIN EXEMPLAIRE ON EMPRUNT.idExemplaire = EXEMPLAIRE.idExemplaire
                             WHERE EMPRUNT.dateRendu IS NULL
-                            AND EXEMPLAIRE.idOeuvre = " . htmlentities($_GET['oeuvre']) . "
-                            ";
+                            AND EXEMPLAIRE.idOeuvre = " . htmlentities($_GET['oeuvre']) . ";";
         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
         $donnees = $reponse->fetchAll();
         if(!$donnees)

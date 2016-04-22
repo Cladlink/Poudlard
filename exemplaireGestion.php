@@ -32,7 +32,7 @@
                         </thead>
                         <?php foreach ($donnees as $row) :
                             $addrUpdate = "exemplaireUpdate.php?exemplaire=" . $row['idExemplaire'];
-                            $addrDelete = "exemplaireSupprimer.php?exemplaire=" . $row['idExemplaire'];
+                            $addrDelete = "exemplaireSupprimer.php?exemplaire=" . $row['idExemplaire'] . "&oeuvre=" . $_GET['oeuvre'];
                             ?><tr>
                             <td><?= $row['idExemplaire'] ?></td>
                             <td><?= $row['etatExemplaire']; ?></td>
