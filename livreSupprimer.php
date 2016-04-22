@@ -6,23 +6,23 @@ if (isset($_GET['oeuvre']))
     {
         include "php/connexion.php";
 
-        $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre
+        $ma_commande_SQL = "SELECT EXEMPLAIRE.idExemplaire
                             FROM EMPRUNT
                             JOIN EXEMPLAIRE ON EMPRUNT.idExemplaire = EXEMPLAIRE.idExemplaire
-                            JOIN OEUVRE ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
                             WHERE EMPRUNT.dateRendu IS NULL
-                            AND adherent.idAdherent = " . htmlentities($_GET['adherent']) . "
-                            ORDER BY ADHERENT.nomAdherent;
+                            AND EXEMPLAIRE.idOeuvre = " . htmlentities($_GET['oeuvre']) . "
                             ";
         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
         $donnees = $reponse->fetchAll();
         if(!$donnees)
         {
-            $ma_commande_SQL = "DELETE FROM ADHERENT
-                            WHERE idAdherent = \"" . htmlentities($_GET['adherent']) . "\";";
-            if($ma_connexion_mysql!= NULL)
-                $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
-            $_SESSION['message'] = 	"l'adherent a bien été supprimé !";
+            $ma_commande_SQL = "DELETE FROM EXEMPLAIRE
+                            WHERE EXEMPLAIRE.idOeuvre = \"" . htmlentities($_GET['oeuvre']) . "\";";
+
+            if($ma_connexion_mysql!= NULL) {
+                $nbr_lignes_affectees = $ma_connexion_mysql->exec($ma_commande_SQL);
+            }
+            $_SESSION['message'] = 	"Le livre et ses exemplaires ont bien été supprimés !";
         }
         else
         {
@@ -30,6 +30,6 @@ if (isset($_GET['oeuvre']))
         }
 
 
-        header('location: adherentGestion.php');
+        header('location: livreGestion.php');
     }
 }

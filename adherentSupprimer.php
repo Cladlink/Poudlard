@@ -2,7 +2,6 @@
 session_start();
 if (isset($_GET['adherent']))
 {
-
     if (!empty($_GET['adherent']))
     {
         include "php/connexion.php";
@@ -29,8 +28,6 @@ if (isset($_GET['adherent']))
         {
             $_SESSION['messageError'] = "Ne peut être supprimé car des emprunts sont encore en cours ! ";
         }
-
-
         header('location: adherentGestion.php');
     }
 }

@@ -8,7 +8,6 @@
     <file url="file://$PROJECT_DIR$/adherentSupprimer.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/adherentUpdate.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntAdd.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/empruntGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntHistorique.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntRendu.php" dialect="MySQL" />
   </component>

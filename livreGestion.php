@@ -86,12 +86,13 @@
             <?php foreach ($donnees as $row) :
                 $addrUpdate = "livreUpdate.php?oeuvre=" . $row['idOeuvre'];
                 $addrDelete = "livreSupprimer.php?oeuvre=" . $row['idOeuvre'];
+                $addrExemplaire = "exemplaireGestion.php?oeuvre=" . $row["idOeuvre"];
                 ?><tr>
                 <td><?= $row['idOeuvre'] ?></td>
                 <td><?= $row['titreOeuvre']; ?></td>
                 <td><?= $row['nomAuteur']?></td>
                 <td><?= $row['dateParutionOeuvre']?></td>
-                <td><a href="exemplaireGestion.php">Exemplaires</a></td>
+                <td><a href="<?= $addrExemplaire?>">Exemplaires</a></td>
                 <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
                 <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></a></td>
                 </tr>
