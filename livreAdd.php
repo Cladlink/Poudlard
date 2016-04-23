@@ -1,4 +1,5 @@
 <?php include "Header.php";
+session_start();
 
 if(isset($_POST)
     && isset($_POST['titreLivre'])
@@ -11,16 +12,17 @@ if(isset($_POST)
 
         include "php/connexion.php";
 
-        $idAuteur = "SELECT AUTEUR.idAuteur FROM AUTEUR WHERE AUTEUR.nomAuteur LIKE \""
-            . htmlentities($_POST['nomAuteur'])
+        $idAuteur = "SELECT AUTEUR.idAuteur
+                     FROM AUTEUR
+                     WHERE nomAuteur
+                     LIKE \"" . htmlentities($_POST['nomAuteur']) . "\";";
+
+        $ma_commande_SQL = "INSERT INTO OEUVRE VALUES (NULL, " . htmlentities($idAuteur)
+            . ", \"" . htmlentities($_POST['titreLivre'])
+            . "\", \"" . htmlentities($_POST['dateParution'])
             . "\";";
 
-        $ma_commande_SQL = "INSERT INTO OEUVRE VALUES (NULL, \"" . htmlentities($_POST['titreLivre'])
-            . "\", \"" . htmlentities($_POST['dateParution'])
-            . "\", " . htmlentities($idAuteur)
-            . ");";
-
-        echo "OK";
+        echo $ma_commande_SQL;
 
         if($ma_connexion_mysql!= NULL)
         {
@@ -51,7 +53,7 @@ endif; ?>
                         <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur">
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="text" placeholder="Date de parution" id="dateParution" name="dateParution">
+                        <input type="date" placeholder="Date de parution" id="dateParution" name="dateParution">
                     </div>
                 </div>
                 <button class="arrondi" type="submit">Ajouter</button>
