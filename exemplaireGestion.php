@@ -1,6 +1,7 @@
 <?php include "Header.php" ?>
 
 <section>
+    <h1>Gestion des exemplaires</h1>
     <div class="row">
         <article class=" panel large-12 medium-12 small-12 columns">
             <?php $addrAdd = "exemplaireAdd.php?oeuvre=" . $_GET['oeuvre']; ?>

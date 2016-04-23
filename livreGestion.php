@@ -1,4 +1,5 @@
-<?php include "Header.php"; ?>
+<?php include "Header.php";
+session_start(); ?>
 
 <section>
     <h1>Gestion des livres</h1>
@@ -14,7 +15,7 @@
                         <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur">
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="text" placeholder="Date de parution" id="dateParution" name="dateParution">
+                        <input type="date" placeholder="Date de parution" id="dateParution" name="dateParution">
                     </div>
                 </div>
                 <button class="arrondi" type="submit">Rechercher</button>
@@ -76,7 +77,7 @@
             <table>
                 <thead>
                 <th>ID Oeuvre</th>
-                <th>Titre Oeuvre</th>
+                <th>Titre</th>
                 <th>Nom Auteur</th>
                 <th>Date de parution</th>
                 <th>Accéder aux exemplaires</th>
@@ -92,7 +93,7 @@
                 <td><?= $row['titreOeuvre']; ?></td>
                 <td><?= $row['nomAuteur']?></td>
                 <td><?= $row['dateParutionOeuvre']?></td>
-                <td><a href="<?= $addrExemplaire?>">Exemplaires</a></td>
+                <td><a href="<?= $addrExemplaire?>"><img class="icone" src="img/exemplaire.png" alt="icone exemplaire"></a></td>
                 <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
                 <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></a></td>
                 </tr>
