@@ -92,7 +92,7 @@ if(isset( $_SESSION['messageError'])): ?>
                             </select>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
-                            <label for="idExemplaire">Titre du livre</label>
+                            <label for="idExemplaire">Exemplaires disponible</label>
                             <select name="idExemplaire" id="idExemplaire">
                                 <?php
                                 $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre, exemplaire.idExemplaire, exemplaire.etatExemplaire
