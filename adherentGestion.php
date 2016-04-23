@@ -61,16 +61,16 @@ endif; ?>
                         $where = "WHERE ";
                         if(!empty($_POST['nomAdherent']))
                             $where = $where . "ADHERENT.nomAdherent like \"%" . htmlentities($_POST['nomAdherent']) . "%\" ";
-
                         if(!empty($_POST['adresseAdherent']))
-
                             if ($where == "WHERE ")
                                 $where = $where . "ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
                             else
+                                $where = $where . "AND ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
+                        if(!empty($_POST['dateAdhesion']))
                             if ($where == "WHERE ")
-                                $where = $where . "ADHERENT.datePaimentAdherent like \"%" . htmlentities($_POST['dateAdhesion']) . "%\" ";
+                                $where = $where . "ADHERENT.datePaiementAdherent like \"" . htmlentities($_POST['dateAdhesion']) . "\" ";
                             else
-                                $where = $where . "AND ADHERENT.datePaimentAdherent like \"%" . htmlentities($_POST['dateAdhesion']) . "%\" ";
+                                $where = $where . "AND ADHERENT.datePaiementAdherent like \"" . htmlentities($_POST['dateAdhesion']) . "\" ";
                     }
                     include "php/connexion.php";
 
@@ -81,6 +81,7 @@ endif; ?>
                                                 ADHERENT.datePaiementAdherent
                                         FROM    ADHERENT
                                 ". $where;
+                    echo $ma_commande_SQL;
                 }
                 else
                 {
@@ -89,6 +90,7 @@ endif; ?>
                                                 ADHERENT.adresseAdherent,
                                                 ADHERENT.datePaiementAdherent
                                         FROM    ADHERENT";
+                    echo $ma_commande_SQL;
                 }
 
                 include "php/connexion.php";

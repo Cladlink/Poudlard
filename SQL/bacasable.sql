@@ -72,3 +72,11 @@ FROM    AUTEUR;
 SELECT titreOeuvre
 FROM oeuvre
 WHERE idAuteur = 1;
+
+SELECT *
+FROM emprunt
+WHERE dateEmprunt like '2016-04-11';
+
+SELECT ADHERENT.idAdherent, ADHERENT.nomAdherent, ADHERENT.adresseAdherent, ADHERENT.datePaiementAdherent
+FROM ADHERENT
+WHERE ADHERENT.datePaimentAdherent like "2015-11-03";

@@ -42,7 +42,7 @@ endif; ?>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
                             <label for="dateEmpruntMaxi">Date d'emprunt maxi</label>
-                            <input type="date"  id="dateEmpruntMaxi" name="dateEmpruntMaxi">
+                            <input type="date" id="dateEmpruntMaxi" name="dateEmpruntMaxi">
                         </div>
                     </div>
                     <button class="arrondi" type="submit">Rechercher</button>
@@ -50,7 +50,6 @@ endif; ?>
             </article>
         </div>
     </section>
-
     <section>
         <div class="row">
             <article class=" panel large-12 medium-12 small-12 columns">
