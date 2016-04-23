@@ -67,4 +67,8 @@ HAVING compte > 2;
 SELECT  AUTEUR.idAdherent,
   AUTEUR.nomAdherent,
   AUTEUR.adresseAdherent
-FROM    AUTEUR
+FROM    AUTEUR;
+
+SELECT titreOeuvre
+FROM oeuvre
+WHERE idAuteur = 1;

@@ -1,14 +1,8 @@
 <?php
-/**
- * todo
- *      permettre les emprunts (faire liste déroulante des adherents dans un select puis pareil pour livre
- *
- */
-session_start(); ?>
+session_start();
+include "Header.php";
 
-<?php include "Header.php";?>
-
-<?php if(isset( $_SESSION['message'])): ?>
+if(isset( $_SESSION['message'])): ?>
     <div data-alert class="alert-box success radius">
         <?php echo $_SESSION['message']; ?>
         <a href="#" class="close">&times;</a>
