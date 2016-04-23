@@ -81,7 +81,6 @@ endif; ?>
                                                 ADHERENT.datePaiementAdherent
                                         FROM    ADHERENT
                                 ". $where;
-                    echo $ma_commande_SQL;
                 }
                 else
                 {
@@ -90,7 +89,6 @@ endif; ?>
                                                 ADHERENT.adresseAdherent,
                                                 ADHERENT.datePaiementAdherent
                                         FROM    ADHERENT";
-                    echo $ma_commande_SQL;
                 }
 
                 include "php/connexion.php";
