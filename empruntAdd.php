@@ -95,7 +95,7 @@ if(isset( $_SESSION['messageError'])): ?>
                             <label for="idExemplaire">Titre du livre</label>
                             <select name="idExemplaire" id="idExemplaire">
                                 <?php
-                                $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre, exemplaire.idExemplaire
+                                $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre, exemplaire.idExemplaire, exemplaire.etatExemplaire
                                                     FROM EXEMPLAIRE
                                                       JOIN OEUVRE ON exemplaire.idOeuvre = oeuvre.idOeuvre
                                                     WHERE exemplaire.idExemplaire NOT IN
@@ -104,12 +104,14 @@ if(isset( $_SESSION['messageError'])): ?>
                                                             FROM emprunt
                                                               JOIN exemplaire ON emprunt.idExemplaire = exemplaire.idExemplaire
                                                             WHERE dateRendu IS NULL
-                                                          )
-                                                    GROUP BY Oeuvre.titreOeuvre;";
+                                                          );";
                                 $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
                                 $donnees = $reponse->fetchAll();
-                                foreach($donnees as $row): ?>
-                                    <option value="<?= $row['idExemplaire']?>"><?= $row['titreOeuvre']?></option>
+                                foreach($donnees as $row):
+                                    $titre = $row['titreOeuvre'] . " - " . $row['etatExemplaire'];
+                                    ?>
+
+                                    <option value="<?= $row['idExemplaire']?>"><?= $titre ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

@@ -7,6 +7,9 @@
     <file url="file://$PROJECT_DIR$/adherentGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/adherentSupprimer.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/adherentUpdate.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/auteurGestion.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/auteurSupprimer.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/auteurUpdate.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntAdd.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntHistorique.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntRendu.php" dialect="MySQL" />

@@ -63,3 +63,20 @@ WHERE emprunt.idAdherent = 38
       AND emprunt.dateRendu IS NULL
 GROUP BY emprunt.idAdherent
 HAVING compte > 2;
+
+SELECT  AUTEUR.idAdherent,
+  AUTEUR.nomAdherent,
+  AUTEUR.adresseAdherent
+FROM    AUTEUR;
+
+SELECT titreOeuvre
+FROM oeuvre
+WHERE idAuteur = 1;
+
+SELECT *
+FROM emprunt
+WHERE dateEmprunt like '2016-04-11';
+
+SELECT ADHERENT.idAdherent, ADHERENT.nomAdherent, ADHERENT.adresseAdherent, ADHERENT.datePaiementAdherent
+FROM ADHERENT
+WHERE ADHERENT.datePaimentAdherent like "2015-11-03";
