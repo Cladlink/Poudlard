@@ -21,6 +21,9 @@ if(isset( $_SESSION['messageError'])): ?>
 endif; ?>
     <section>
         <h1>Gestion des auteurs</h1>
+        <div  class="large-centered medium-centered small-centered large-4 medium-6 small-10 columns">
+            <img src="img/auteurs.jpg" alt="Gilderoy Lockhart"/>
+        </div>
         <div class="row">
             <article class="panel large-12 medium-12 small-12 columns" >
                 <h2>Rechercher un auteur</h2>

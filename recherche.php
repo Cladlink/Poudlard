@@ -4,6 +4,9 @@ include "Header.php"; ?>
 
 <section>
     <h1>Recherche</h1>
+    <div  class="large-centered medium-centered small-centered large-4 medium-6 small-10 columns">
+        <img src="img/recherche.jpg" alt="Un livre sur un pupitre"/>
+    </div>
     <div class="row">
         <article class="panel large-12 medium-12 small-12 columns" >
             <form action="formRecherche.php" method="post">

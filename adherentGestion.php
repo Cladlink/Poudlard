@@ -1,9 +1,9 @@
 <?php
-session_start(); ?>
+session_start();
 
-<?php include "Header.php";?>
+include "Header.php";
 
-<?php if(isset( $_SESSION['message'])): ?>
+if(isset( $_SESSION['message'])): ?>
     <div data-alert class="alert-box success radius">
         <?php echo $_SESSION['message']; ?>
         <a href="#" class="close">&times;</a>
@@ -21,6 +21,9 @@ if(isset( $_SESSION['messageError'])): ?>
 endif; ?>
 <section>
     <h1>Gestion des adherents</h1>
+    <div  class="large-centered medium-centered small-centered large-4 medium-6 small-10 columns">
+        <img src="img/adherents.jpg" alt="Harry, Hermione et Ron représentant des adherents"/>
+    </div>
     <div class="row">
         <article class="panel large-12 medium-12 small-12 columns" >
             <h2>Rechercher un adhérent</h2>

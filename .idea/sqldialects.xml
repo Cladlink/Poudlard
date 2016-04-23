@@ -11,6 +11,7 @@
     <file url="file://$PROJECT_DIR$/auteurSupprimer.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/auteurUpdate.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntAdd.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/empruntGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntHistorique.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntRendu.php" dialect="MySQL" />
   </component>
