@@ -12,17 +12,10 @@ if(isset($_POST)
 
         include "php/connexion.php";
 
-        $idAuteur = "SELECT AUTEUR.idAuteur
-                     FROM AUTEUR
-                     WHERE nomAuteur
-                     LIKE \"" . htmlentities($_POST['nomAuteur']) . "\";";
-
         $ma_commande_SQL = "INSERT INTO OEUVRE VALUES (NULL, " . htmlentities($idAuteur)
             . ", \"" . htmlentities($_POST['titreLivre'])
             . "\", \"" . htmlentities($_POST['dateParution'])
             . "\";";
-
-        echo $ma_commande_SQL;
 
         if($ma_connexion_mysql!= NULL)
         {
@@ -50,7 +43,18 @@ endif; ?>
                         <input type="text" placeholder="Titre du livre" id="titreLivre" name="titreLivre">
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur">
+                        <label for="idAuteur">Nom de l'auteur</label>
+                        <select name="idAuteur" id="idAuteur">
+                            <?php
+                            $ma_commande_SQL = "SELECT AUTEUR.nomAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;";
+                            $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
+                            $donnees = $reponse->fetchAll();
+                            foreach($donnees as $row):
+                                $nomAuteur = $row['nomAuteur'];
+                                ?>
+                                <option value="<?= $row['idAuteur']?>"><?= $nomAuteur ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
                         <input type="date" placeholder="Date de parution" id="dateParution" name="dateParution">
