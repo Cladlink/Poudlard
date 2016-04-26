@@ -32,7 +32,7 @@ if (isset($_POST)
             $rbzrb=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
         $adresse = 'location: exemplaireGestion.php?oeuvre='.$_POST['oeuvre'];
-        $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
+        $_SESSION['message'] = 	"L'exemplaire a bien été créé !";
         header($adresse);
 
     else: ?>

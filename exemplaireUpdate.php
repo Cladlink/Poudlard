@@ -16,7 +16,7 @@ if (isset($_POST)
                             SET etatExemplaire = \"" . htmlentities($_POST['etat']) . "\",
                              dateAchatExemplaire = \"". htmlentities($_POST['dateAchat']) . "\",
                              prixExemplaire = \"" . $_POST['prix'] . "\"
-                            WHERE idExemplaire = \"". htmlentities($_GET['exemplaire']) . "\";";
+                            WHERE idExemplaire = \"". htmlentities($_POST['exemplaire']) . "\";";
 
         if($ma_connexion_mysql!= NULL)
         {
@@ -24,7 +24,7 @@ if (isset($_POST)
         }
 
         $adresse = 'location: exemplaireGestion.php?oeuvre='.$_POST['oeuvre'];
-        $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
+        $_SESSION['message'] = 	"L'exemplaire a bien été mis a jour !";
         header($adresse);
     }
 }
@@ -45,7 +45,7 @@ if (isset($_GET['exemplaire'])):
             <div class="row">
                 <article class="panel large-12 medium-12 small-12 columns" >
                     <h2>Modifier un exemplaire</h2>
-                    <form action="exemplaireUpdate.php?oeuvre=<?=$_GET['oeuvre'] ?>" method="post">
+                    <form action="exemplaireUpdate.php?exemplaire=<?=$_GET['exemplaire'] ?>" method="post">
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
 
@@ -57,9 +57,12 @@ if (isset($_GET['exemplaire'])):
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
                                 <input type="date" placeholder="<?=$row['dateAchatExemplaire'] ?>" id="dateAchat" name="dateAchat" value="<?=$row['dateAchatExemplaire'] ?>">
-                            </div>
+                            <div>
                                 <input type="hidden" value="<?= $row['idOeuvre'] ?>" id="oeuvre" name="oeuvre">
-                        </div>
+                            </div>
+                            <div>
+                                <input type="hidden" value="<?= $_GET['exemplaire'] ?>" id="exemplaire" name="exemplaire">
+                            </div>
                         <?php endforeach;?>
                         <button class="arrondi" type="submit">Modifier</button>
                     </form>
