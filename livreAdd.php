@@ -1,29 +1,35 @@
-<?php include "Header.php";
+<?php
 session_start();
+include "Header.php";
+include "php/connexion.php";
 
 if(isset($_POST)
     && isset($_POST['titreLivre'])
-    && isset($_POST['nomAuteur'])
+    && isset($_POST['idAuteur'])
     && isset($_POST['dateParution'])):
 
     if(!empty($_POST['titreLivre'])
-        && !empty($_POST['nomAuteur'])
+        && !empty($_POST['idAuteur'])
         && !empty($_POST['dateParution'])):
 
-        include "php/connexion.php";
-
-        $ma_commande_SQL = "INSERT INTO OEUVRE VALUES (NULL, " . htmlentities($idAuteur)
-            . ", \"" . htmlentities($_POST['titreLivre'])
+        $ma_commande_SQL = "INSERT INTO OEUVRE VALUES (NULL, \""
+            . htmlentities($_POST['titreLivre'])
             . "\", \"" . htmlentities($_POST['dateParution'])
-            . "\";";
+            . "\", \"" . htmlentities($_POST['idAuteur'])
+            . "\");";
+
+        echo $ma_commande_SQL;
 
         if($ma_connexion_mysql!= NULL)
         {
-            $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
+            $rbzrb=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $message = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
+        $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
         header('location: livreGestion.php');
+
+
+
 
     else: ?>
     <div data-alert class="alert-box alert">
@@ -43,10 +49,9 @@ endif; ?>
                         <input type="text" placeholder="Titre du livre" id="titreLivre" name="titreLivre">
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <label for="idAuteur">Nom de l'auteur</label>
                         <select name="idAuteur" id="idAuteur">
                             <?php
-                            $ma_commande_SQL = "SELECT AUTEUR.nomAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;";
+                            $ma_commande_SQL = "SELECT AUTEUR.nomAuteur, AUTEUR.idAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;";
                             $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
                             $donnees = $reponse->fetchAll();
                             foreach($donnees as $row):

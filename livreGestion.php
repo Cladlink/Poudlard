@@ -1,5 +1,24 @@
-<?php include "Header.php";
-session_start(); ?>
+<?php
+session_start();
+include "Header.php";
+include "php/connexion.php";
+
+if(isset( $_SESSION['message'])): ?>
+<div data-alert class="alert-box success radius">
+    <?php echo $_SESSION['message']; ?>
+    <a href="#" class="close">&times;</a>
+</div>
+<?php
+unset( $_SESSION['message']);
+endif;
+if(isset( $_SESSION['messageError'])): ?>
+    <div data-alert class="alert-box alert success radius">
+        <?php echo $_SESSION['messageError']; ?>
+        <a href="#" class="close">&times;</a>
+    </div>
+    <?php
+    unset( $_SESSION['messageError']);
+endif; ?>
 
 <section>
     <h1>Gestion des livres</h1>
@@ -52,7 +71,6 @@ session_start(); ?>
                         else
                             $where = $where . " AND OEUVRE.dateParutionOeuvre LIKE \"%" . htmlentities($_POST['dateParution']) . "%\"";
                 }
-                include "php/connexion.php";
 
                 $ma_commande_SQL = "SELECT OEUVRE.idOeuvre,
                                             OEUVRE.titreOeuvre,
@@ -60,7 +78,8 @@ session_start(); ?>
                                             OEUVRE.dateParutionOeuvre
                                     FROM OEUVRE
                                     JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur
-                                    " . $where;
+                                    " . $where . "
+                                    ORDER BY AUTEUR.nomAuteur, OEUVRE.titreOeuvre;";
             }
             else
             {
@@ -69,9 +88,10 @@ session_start(); ?>
                                            AUTEUR.nomAuteur,
                                             OEUVRE.dateParutionOeuvre
                                         FROM OEUVRE
-                                        JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur";
+                                        JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur
+                                        ORDER BY AUTEUR.nomAuteur, OEUVRE.titreOeuvre;";
             }
-            include "php/connexion.php";
+
             $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
             $donnees = $reponse->fetchAll();?>
             <table>

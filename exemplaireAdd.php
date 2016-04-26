@@ -1,6 +1,9 @@
 <?php
 session_start();
 include "Header.php";
+include "php/connexion.php";
+
+echo $_GET['oeuvre'] . " ok";
 
 if (isset($_POST)
     && isset($_POST['etat'])
@@ -8,28 +11,31 @@ if (isset($_POST)
     && isset($_POST['dateAchat'])
     && isset($_GET['oeuvre'])):
 
+    echo "coucou";
+
     if (!empty($_POST['etat'])
         && !empty($_POST['prix'])
         && !empty($_POST['dateAchat'])
         && !empty($_GET['oeuvre'])):
 
-        include "php/connexion.php";
-
-        $ma_commande_SQL = "INSERT INTO EXEMPLAIRE VALUES (null, "
-            . htmlentities($_GET['oeuvre'])
-            . ", \""
+        $ma_commande_SQL = "INSERT INTO EXEMPLAIRE VALUES (NULL, \""
             . htmlentities($_POST['etat'])
             . "\", \""
             . htmlentities($_POST['dateAchat'])
-            . "\", "
+            . "\", \""
             . htmlentities($_POST['prix'])
-            . ");";
+            . "\", \""
+            . htmlentities($_GET['oeuvre'])
+            . "\");";
+
+        echo $ma_commande_SQL;
+
         if($ma_connexion_mysql!= NULL)
         {
-            $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
+            $rbzrb=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $_SESSION['message'] = 	"L'exemplaire a bien été créé !";
+        $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
         header('location: exemplaireGestion.php');
 
     else: ?>

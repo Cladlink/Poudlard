@@ -1,11 +1,30 @@
-<?php include "Header.php" ?>
+<?php
+session_start();
+include "Header.php";
+
+if(isset( $_SESSION['message'])): ?>
+<div data-alert class="alert-box success radius">
+    <?php echo $_SESSION['message']; ?>
+    <a href="#" class="close">&times;</a>
+</div>
+<?php
+unset( $_SESSION['message']);
+endif;
+if(isset( $_SESSION['messageError'])): ?>
+    <div data-alert class="alert-box alert success radius">
+        <?php echo $_SESSION['messageError']; ?>
+        <a href="#" class="close">&times;</a>
+    </div>
+    <?php
+    unset( $_SESSION['messageError']);
+endif; ?>
 
 <section>
     <h1>Gestion des exemplaires</h1>
     <div class="row">
         <article class=" panel large-12 medium-12 small-12 columns">
-            <?php $addrAdd = "exemplaireAdd.php?oeuvre=" . $_GET['oeuvre']; ?>
-            <a href="<?= $addrAdd?>"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
+            <?php $addrAdd = "exemplaireAdd.php?oeuvre=" . $_GET['oeuvre'];?>
+            <a href="<?=$addrAdd?>"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
             <h2 >Liste des exemplaires</h2>
             <?php
             if(isset($_GET['oeuvre'])):
