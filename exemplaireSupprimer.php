@@ -20,12 +20,14 @@ if (isset($_GET['exemplaire']))
                             WHERE EXEMPLAIRE.idExemplaire = " . htmlentities($_GET['exemplaire']) . ";";
             if($ma_connexion_mysql!= NULL)
                 $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
-            $_SESSION['message'] = 	"L'exemplaire a bien été supprimé !";
         }
         else
         {
             $_SESSION['messageError'] = "Ne peut être supprimé car l'exemplaire est emprunté ! ";
         }
-        header('location: livreGestion.php');
+
+        $adresse = 'location: exemplaireGestion.php?oeuvre='.$_GET['oeuvre'];
+        $_SESSION['message'] = 	"L'exemplaire a bien été supprimé !";
+        header($adresse);
     }
 }

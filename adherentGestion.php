@@ -63,12 +63,12 @@ endif; ?>
                     {
                         $where = "WHERE ";
                         if(!empty($_POST['nomAdherent']))
-                            $where = $where . "ADHERENT.nomAdherent like \"%" . htmlentities($_POST['nomAdherent']) . "%\" ";
+                            $where = $where . "ADHERENT.nomAdherent like \"" . htmlentities($_POST['nomAdherent']) . "%\" ";
                         if(!empty($_POST['adresseAdherent']))
                             if ($where == "WHERE ")
-                                $where = $where . "ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
+                                $where = $where . "ADHERENT.adresseAdherent like \"" . htmlentities($_POST['adresseAdherent']) . "%\" ";
                             else
-                                $where = $where . "AND ADHERENT.adresseAdherent like \"%" . htmlentities($_POST['adresseAdherent']) . "%\" ";
+                                $where = $where . "AND ADHERENT.adresseAdherent like \"" . htmlentities($_POST['adresseAdherent']) . "%\" ";
                         if(!empty($_POST['dateAdhesion']))
                             if ($where == "WHERE ")
                                 $where = $where . "ADHERENT.datePaiementAdherent like \"" . htmlentities($_POST['dateAdhesion']) . "\" ";

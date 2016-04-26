@@ -58,14 +58,14 @@ endif; ?>
                     {
                         $where = "WHERE ";
                         if(!empty($_POST['nomAuteur']))
-                            $where = $where . "AUTEUR.nomAuteur like \"%" . htmlentities($_POST['nomAuteur']) . "%\" ";
+                            $where = $where . "AUTEUR.nomAuteur like \"" . htmlentities($_POST['nomAuteur']) . "%\" ";
 
                         if(!empty($_POST['prenomAuteur']))
 
                             if ($where == "WHERE ")
-                                $where = $where . "AUTEUR.prenomAuteur like \"%" . htmlentities($_POST['prenomAuteur']) . "%\" ";
+                                $where = $where . "AUTEUR.prenomAuteur like \"" . htmlentities($_POST['prenomAuteur']) . "%\" ";
                             else
-                                $where = $where . "AND AUTEUR.prenomAuteur like \"%" . htmlentities($_POST['prenomAuteur']) . "%\" ";
+                                $where = $where . "AND AUTEUR.prenomAuteur like \"" . htmlentities($_POST['prenomAuteur']) . "%\" ";
 
                     }
                     include "php/connexion.php";

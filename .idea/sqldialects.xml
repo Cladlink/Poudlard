@@ -14,5 +14,10 @@
     <file url="file://$PROJECT_DIR$/empruntGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntHistorique.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntRendu.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/exemplaireAdd.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/exemplaireGestion.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/exemplaireSupprimer.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/exemplaireUpdate.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/livreAdd.php" dialect="MySQL" />
   </component>
 </project>

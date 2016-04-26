@@ -3,20 +3,17 @@ session_start();
 include "Header.php";
 include "php/connexion.php";
 
-echo $_GET['oeuvre'] . " ok";
 
 if (isset($_POST)
     && isset($_POST['etat'])
     && isset($_POST['prix'])
     && isset($_POST['dateAchat'])
-    && isset($_GET['oeuvre'])):
-
-    echo "coucou";
+    && isset($_POST['oeuvre'])):
 
     if (!empty($_POST['etat'])
         && !empty($_POST['prix'])
         && !empty($_POST['dateAchat'])
-        && !empty($_GET['oeuvre'])):
+        && !empty($_POST['oeuvre'])):
 
         $ma_commande_SQL = "INSERT INTO EXEMPLAIRE VALUES (NULL, \""
             . htmlentities($_POST['etat'])
@@ -25,7 +22,7 @@ if (isset($_POST)
             . "\", \""
             . htmlentities($_POST['prix'])
             . "\", \""
-            . htmlentities($_GET['oeuvre'])
+            . htmlentities($_POST['oeuvre'])
             . "\");";
 
         echo $ma_commande_SQL;
@@ -34,9 +31,9 @@ if (isset($_POST)
         {
             $rbzrb=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
-
+        $adresse = 'location: exemplaireGestion.php?oeuvre='.$_POST['oeuvre'];
         $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
-        header('location: exemplaireGestion.php');
+        header($adresse);
 
     else: ?>
         <div data-alert class="alert-box alert">
@@ -62,6 +59,8 @@ endif; ?>
                         <div class="large-4 medium-4 small-4 columns">
                             <input type="date" placeholder="Date d'achat" id="dateAchat" name="dateAchat" value="<?=date("Y-m-d")?>" >
                         </div>
+                        <input type="hidden" value="<?php if (isset($_GET['oeuvre'])) echo $_GET['oeuvre']; ?>" id="oeuvre" name="oeuvre">
+
                     </div>
                     <button class="arrondi" type="submit">Ajouter</button>
                 </form>

@@ -73,7 +73,7 @@ endif; ?>
                     {
                         $where = " ";
                         if(!empty($_POST['nomAdherent']))
-                            $where = $where . "AND ADHERENT.nomAdherent like \"%" . htmlentities($_POST['nomAdherent']) . "%\" ";
+                            $where = $where . "AND ADHERENT.nomAdherent like \"" . htmlentities($_POST['nomAdherent']) . "%\" ";
 
                         if(!empty($_POST['dateEmpruntMini']))
                         {

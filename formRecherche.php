@@ -12,9 +12,9 @@ include "Header.php"; ?>
             if(!empty($_POST['nomAuteur']) || !empty($_POST['titreOeuvre']) || !empty($_POST['dateParution']))
             {
                 if(!empty($_POST['nomAuteur']))
-                    $where = $where . "AND AUTEUR.nomAuteur like \"%" . $_POST['nomAuteur'] . "%\" ";
+                    $where = $where . "AND AUTEUR.nomAuteur like \"" . $_POST['nomAuteur'] . "%\" ";
                 if(!empty($_POST['titreOeuvre']))
-                    $where = $where . "AND OEUVRE.titreOeuvre like \"%" . $_POST['titreOeuvre'] . "%\" ";
+                    $where = $where . "AND OEUVRE.titreOeuvre like \"" . $_POST['titreOeuvre'] . "%\" ";
                 if(!empty($_POST['dateParution']))
                     $where = $where . "AND YEAR(OEUVRE.dateParutionOeuvre) = YEAR(" . $_POST['dateParution'] . ")";
             }

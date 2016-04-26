@@ -23,8 +23,9 @@ if (isset($_POST)
             $nb_lignes_affectes=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $_SESSION['message'] = 	"L'exemplaire a bien été modifié.";
-        header('location: livreGestion.php');
+        $adresse = 'location: exemplaireGestion.php?oeuvre='.$_POST['oeuvre'];
+        $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
+        header($adresse);
     }
 }
 if (isset($_GET['exemplaire'])):
@@ -32,9 +33,7 @@ if (isset($_GET['exemplaire'])):
     if (!empty($_GET['exemplaire'])):
 
 
-        $ma_commande_SQL = "SELECT  EXEMPLAIRE.etatExemplaire,
-                            EXEMPLAIRE.dateAchatExemplaire,
-                            EXEMPLAIRE.prixExemplaire
+        $ma_commande_SQL = "SELECT *
                     FROM EXEMPLAIRE
                     WHERE idExemplaire = \"" . htmlentities($_GET['exemplaire']) . "\";";
 
@@ -46,7 +45,7 @@ if (isset($_GET['exemplaire'])):
             <div class="row">
                 <article class="panel large-12 medium-12 small-12 columns" >
                     <h2>Modifier un exemplaire</h2>
-                    <form action="exemplaireUpdate.php?exemplaire=<?=$_GET['exemplaire'] ?>" method="post">
+                    <form action="exemplaireUpdate.php?oeuvre=<?=$_GET['oeuvre'] ?>" method="post">
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
 
@@ -59,6 +58,7 @@ if (isset($_GET['exemplaire'])):
                             <div class="large-4 medium-4 small-4 columns">
                                 <input type="date" placeholder="<?=$row['dateAchatExemplaire'] ?>" id="dateAchat" name="dateAchat" value="<?=$row['dateAchatExemplaire'] ?>">
                             </div>
+                                <input type="hidden" value="<?= $row['idOeuvre'] ?>" id="oeuvre" name="oeuvre">
                         </div>
                         <?php endforeach;?>
                         <button class="arrondi" type="submit">Modifier</button>

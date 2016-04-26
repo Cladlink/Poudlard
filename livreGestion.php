@@ -59,17 +59,17 @@ endif; ?>
                     || !empty($_POST['dateParution'])) {
                     $where = "WHERE";
                     if (!empty($_POST['titreLivre']))
-                        $where = $where . " OEUVRE.titreOeuvre LIKE \"%" . htmlentities($_POST['titreLivre']) . "%\"";
+                        $where = $where . " OEUVRE.titreOeuvre LIKE \"" . htmlentities($_POST['titreLivre']) . "%\"";
                     if (!empty($_POST['nomAuteur']))
                         if ($where == "WHERE")
-                            $where = $where . " AUTEUR.nomAuteur LIKE \"%" . htmlentities($_POST['nomAuteur']) . "%\"";
+                            $where = $where . " AUTEUR.nomAuteur LIKE \"" . htmlentities($_POST['nomAuteur']) . "%\"";
                         else
-                            $where = $where . " AND AUTEUR.nomAuteur LIKE \"%" . htmlentities($_POST['nomAuteur']) . "%\"";
+                            $where = $where . " AND AUTEUR.nomAuteur LIKE \"" . htmlentities($_POST['nomAuteur']) . "%\"";
                     if (!empty($_POST['dateParution']))
                         if ($where == "WHERE")
-                            $where = $where . " OEUVRE.dateParutionOeuvre LIKE \"%" . htmlentities($_POST['dateParution']) . "%\"";
+                            $where = $where . " OEUVRE.dateParutionOeuvre LIKE \"" . htmlentities($_POST['dateParution']) . "%\"";
                         else
-                            $where = $where . " AND OEUVRE.dateParutionOeuvre LIKE \"%" . htmlentities($_POST['dateParution']) . "%\"";
+                            $where = $where . " AND OEUVRE.dateParutionOeuvre LIKE \"" . htmlentities($_POST['dateParution']) . "%\"";
                 }
 
                 $ma_commande_SQL = "SELECT OEUVRE.idOeuvre,
