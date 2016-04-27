@@ -50,7 +50,25 @@ if (isset($_GET['exemplaire'])):
                             <?php foreach ($donnees as $row ): ?>
 
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="text" placeholder="<?= $row['etatExemplaire'] ?>" id="etat" name="etat" value="<?=$row['etatExemplaire'] ?>">
+                                <select name="etat" id="etat">
+                                    <?php
+                                    $etatActuel = $row['etatExemplaire'];
+
+                                    if($etatActuel == "EXCELLENT")
+                                        $excellent = "selected";
+                                    else if($etatActuel == "BON")
+                                        $bon = "selected";
+                                    else if($etatActuel == "MOYEN")
+                                        $moyen = "selected";
+                                    else if($etatActuel == "MAUVAIS")
+                                        $mauvais = "selected";
+                                    ?>
+
+                                    <option value="EXCELLENT" <?php echo $excellent; ?>>EXCELLENT</option>
+                                    <option value="BON" <?php echo $bon; ?>>BON</option>
+                                    <option value="MOYEN" <?php echo $moyen; ?>>MOYEN</option>
+                                    <option value="MAUVAIS" <?php echo $mauvais; ?>>MAUVAIS</option>
+                                </select>
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
                                 <input type="text" placeholder="<?= $row['prixExemplaire'] ?>" id="prix" name="prix" value="<?=$row['prixExemplaire'] ?>">

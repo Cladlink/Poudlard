@@ -51,7 +51,12 @@ endif; ?>
                 <form action="exemplaireAdd.php" method="post">
                     <div class="row">
                         <div class="large-4 medium-4 small-4 columns">
-                            <input type="text" placeholder="Etat" id="etat" name="etat">
+                            <select name="etat" id="etat">
+                                <option value="EXCELLENT">EXCELLENT</option>
+                                <option value="BON">BON</option>
+                                <option value="MOYEN">MOYEN</option>
+                                <option value="MAUVAIS">MAUVAIS</option>
+                            </select>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
                             <input type="text" placeholder="Prix" id="prix" name="prix">
