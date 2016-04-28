@@ -32,8 +32,9 @@ if (isset($_GET['oeuvre'])):
     if (!empty($_GET['oeuvre'])):
 
 
-        $ma_commande_SQL = "SELECT  Oeuvre.titreOeuvre,
-                            Oeuvre.dateParutionOeuvre
+        $ma_commande_SQL = "SELECT  OEUVRE.titreOeuvre,
+                            OEuVRE.dateParutionOeuvre,
+                            OEUVRE.idAuteur
                     FROM OEUVRE
                     WHERE idOeuvre = \"" . htmlentities($_GET['oeuvre']) . "\";";
 
@@ -60,11 +61,16 @@ if (isset($_GET['oeuvre'])):
                                         $ma_commande_SQL = "SELECT AUTEUR.nomAuteur, AUTEUR.idAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;";
                                         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
                                         $donnees = $reponse->fetchAll();
-                                        foreach($donnees as $row):
-                                            $nomAuteur = $row['nomAuteur'];
+                                        foreach($donnees as $row2):
+                                            $nomAuteur = $row2['nomAuteur'];
+                                            if($row2['idAuteur'] == $row['idAuteur'])
+                                            {
                                             ?>
-                                            <option value="<?= $row['idAuteur']?>"><?= $nomAuteur ?></option>
-                                        <?php endforeach; ?>
+                                                <option value="<?= $row2['idAuteur']?>" selected><?= $nomAuteur ?></option>
+                                            <?php } else { ?>
+                                            <option value="<?= $row2['idAuteur']?>"><?= $nomAuteur ?></option>
+                                            <?php }
+                                        endforeach; ?>
                                     </select>
                                 </div>
                             <?php endforeach;?>
