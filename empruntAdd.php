@@ -95,7 +95,7 @@ if(isset( $_SESSION['messageError'])): ?>
                             <label for="idExemplaire">Exemplaires disponible</label>
                             <select name="idExemplaire" id="idExemplaire">
                                 <?php
-                                $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre, exemplaire.idExemplaire, exemplaire.etatExemplaire
+                                $ma_commande_SQL = "SELECT EXEMPLAIRE.idExemplaire, OEUVRE.titreOeuvre, exemplaire.idExemplaire, exemplaire.etatExemplaire
                                                     FROM EXEMPLAIRE
                                                       JOIN OEUVRE ON exemplaire.idOeuvre = oeuvre.idOeuvre
                                                     WHERE exemplaire.idExemplaire NOT IN
@@ -108,7 +108,7 @@ if(isset( $_SESSION['messageError'])): ?>
                                 $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
                                 $donnees = $reponse->fetchAll();
                                 foreach($donnees as $row):
-                                    $titre = $row['titreOeuvre'] . " - " . $row['etatExemplaire'];
+                                    $titre = $row['idExemplaire'] . " - " . $row['titreOeuvre'] . " - " . $row['etatExemplaire'];
                                     ?>
 
                                     <option value="<?= $row['idExemplaire']?>"><?= $titre ?></option>

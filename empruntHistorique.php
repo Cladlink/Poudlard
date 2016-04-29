@@ -96,7 +96,7 @@ include "Header.php" ?>
                     include "php/connexion.php";
 
 
-                    $ma_commande_SQL = "SELECT ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, EMPRUNT.dateRendu
+                    $ma_commande_SQL = "SELECT EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, EMPRUNT.dateRendu
                                         FROM EMPRUNT
                                         JOIN ADHERENT
                                           ON EMPRUNT.idAdherent = ADHERENT.idAdherent
@@ -110,7 +110,7 @@ include "Header.php" ?>
                 }
                 else
                 {
-                    $ma_commande_SQL = "SELECT ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, EMPRUNT.dateRendu
+                    $ma_commande_SQL = "SELECT EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, EMPRUNT.dateRendu
                                         FROM EMPRUNT
                                         JOIN ADHERENT
                                           ON EMPRUNT.idAdherent = ADHERENT.idAdherent
@@ -130,6 +130,7 @@ include "Header.php" ?>
 
                 <table>
                     <tr>
+                        <th>Id exemplaire</th>
                         <th>Nom Adherent</th>
                         <th>Livre emprunté</th>
                         <th>Date d'emprunt</th>
@@ -138,6 +139,7 @@ include "Header.php" ?>
 
                     <?php foreach ($donnees as $row) :
                         ?><tr>
+                        <td><?= $row['idExemplaire']; ?></td>
                         <td><?= $row['nomAdherent']; ?></td>
                         <td><?= $row['titreOeuvre']; ?></td>
                         <td><?= $row['dateEmprunt']?></td>

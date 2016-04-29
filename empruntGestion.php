@@ -91,7 +91,7 @@ endif; ?>
                     include "php/connexion.php";
 
 
-                    $ma_commande_SQL = "SELECT EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
+                    $ma_commande_SQL = "SELECT EMPRUNT.idExemplaire, EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
                                         FROM EMPRUNT
                                         JOIN ADHERENT
                                           ON EMPRUNT.idAdherent = ADHERENT.idAdherent
@@ -105,7 +105,7 @@ endif; ?>
                 }
                 else
                 {
-                    $ma_commande_SQL = "SELECT EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
+                    $ma_commande_SQL = "SELECT EMPRUNT.idExemplaire, EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
                                         FROM EMPRUNT
                                         JOIN ADHERENT
                                           ON EMPRUNT.idAdherent = ADHERENT.idAdherent
@@ -125,6 +125,7 @@ endif; ?>
 
                 <table>
                     <tr>
+                        <th>ID exemplaire</th>
                         <th>Nom Adherent</th>
                         <th>Livre emprunté</th>
                         <th>Date d'emprunt</th>
@@ -139,6 +140,7 @@ endif; ?>
                             ."&dateEmprunt="
                             . $row['dateEmprunt'];
                         ?><tr>
+                        <td><?= $row['idExemplaire']; ?></td>
                         <td><?= $row['nomAdherent']; ?></td>
                         <td><?= $row['titreOeuvre']; ?></td>
                         <td><?= $row['dateEmprunt']?></td>
