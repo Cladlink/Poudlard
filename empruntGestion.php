@@ -133,18 +133,26 @@ endif; ?>
                     </tr>
 
                     <?php foreach ($donnees as $row) :
+
                         $addRendu = "empruntRendu.php?adherent="
                             . $row['idAdherent']
                             ."&exemplaire="
                             . $row['idExemplaire']
                             ."&dateEmprunt="
                             . $row['dateEmprunt'];
+
+                        $date = date_parse($row['dateEmprunt']);
+                        $dateEmprunt = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
+
+                        $date = date_parse($row['dateRenduMax']);
+                        $dateRenduMax = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
+
                         ?><tr>
                         <td><?= $row['idExemplaire']; ?></td>
                         <td><?= $row['nomAdherent']; ?></td>
                         <td><?= $row['titreOeuvre']; ?></td>
-                        <td><?= $row['dateEmprunt']?></td>
-                        <td><?= $row['dateRenduMax']?></td>
+                        <td><?= $dateEmprunt?></td>
+                        <td><?= $dateRenduMax?></td>
                         <td><a href="<?= $addRendu ?>"><img class="icone" src="img/livreRendu.png" alt="livre ouvert avec plume"></td>
                         </tr>
                     <?php endforeach; ?>

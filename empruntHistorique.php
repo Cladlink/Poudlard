@@ -138,12 +138,18 @@ include "Header.php" ?>
                     </tr>
 
                     <?php foreach ($donnees as $row) :
+                        $date = date_parse($row['dateEmprunt']);
+                        $dateEmprunt = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
+
+                        $date = date_parse($row['dateRendu']);
+                        $dateRendu = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
+
                         ?><tr>
                         <td><?= $row['idExemplaire']; ?></td>
                         <td><?= $row['nomAdherent']; ?></td>
                         <td><?= $row['titreOeuvre']; ?></td>
-                        <td><?= $row['dateEmprunt']?></td>
-                        <td><?= $row['dateRendu']?></td>
+                        <td><?= $dateEmprunt?></td>
+                        <td><?= $dateRendu?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

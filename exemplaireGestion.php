@@ -55,12 +55,16 @@ endif; ?>
                         <th>Supprimer</th>
                         </thead>
                         <?php foreach ($donnees as $row) :
+
+                            $date = date_parse($row['dateAchatExemplaire']);
+                            $dateAchat = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
+
                             $addrUpdate = "exemplaireUpdate.php?exemplaire=" . $row['idExemplaire'];
                             $addrDelete = "exemplaireSupprimer.php?exemplaire=" . $row['idExemplaire'] . "&oeuvre=" . $_GET['oeuvre'];
                             ?><tr>
                             <td><?= $row['idExemplaire'] ?></td>
                             <td><?= $row['etatExemplaire']; ?></td>
-                            <td><?= $row['dateAchatExemplaire']?></td>
+                            <td><?= $dateAchat ?></td>
                             <td><?= $row['prixExemplaire']?></td>
                             <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
                             <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></a></td>

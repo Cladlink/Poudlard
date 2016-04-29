@@ -46,12 +46,13 @@ include "Header.php"; ?>
                     <th>Quantité disponible</th>
                 </thead>
             <?php foreach ($donnees as $row) :
-
+                $date = date_parse($row['dateParutionOeuvre']);
+                $dateParution = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
                 ?><tr>
                     <td><?= $row['titreOeuvre'] ?></td>
                     <td><?= $row['nomAuteur']; ?></td>
                     <td><?= $row['prenomAuteur']?></td>
-                    <td><?= $row['dateParutionOeuvre']?></td>
+                    <td><?= $dateParution?></td>
                     <td><?= $row['exemplaire_Restant']?></td>
                 </tr>
             <?php endforeach; ?>

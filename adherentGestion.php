@@ -107,13 +107,15 @@ endif; ?>
                         <th>supprimer</th>
                         </tr>
                         <?php foreach ($donnees as $row) :
+                            $date = date_parse($row['datePaiementAdherent']);
+                            $datePaiement = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
                             $addrUpdate = "adherentUpdate.php?adherent=" . $row['idAdherent'];
                             $addrDelete = "adherentSupprimer.php?adherent=" . $row['idAdherent'];
                             ?><tr>
                             <td><?= $row['idAdherent'] ?></td>
                             <td><?= $row['nomAdherent']; ?></td>
                             <td><?= $row['adresseAdherent']?></td>
-                            <td><?= $row['datePaiementAdherent']?></td>
+                            <td><?= $datePaiement?></td>
                             <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
                             <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></td>
                             </tr>
