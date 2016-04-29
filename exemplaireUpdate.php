@@ -4,18 +4,18 @@ include "Header.php";
 include "php/connexion.php";
 
 if (isset($_POST)
-    || isset($_POST['etat'])
-    || isset($_POST['prix'])
-    || isset($_POST['dateAchat']))
+    && isset($_POST['etat'])
+    && isset($_POST['prix'])
+    && isset($_POST['dateAchat']))
 {
     if (!empty($_POST['etat'])
-        || !empty($_POST['prix'])
-        || !empty($_POST['dateAchat']))
+        && !empty($_POST['prix'])
+        && !empty($_POST['dateAchat']))
     {
         $ma_commande_SQL = "UPDATE EXEMPLAIRE
                             SET etatExemplaire = \"" . htmlentities($_POST['etat']) . "\",
                              dateAchatExemplaire = \"". htmlentities($_POST['dateAchat']) . "\",
-                             prixExemplaire = \"" . $_POST['prix'] . "\"
+                             prixExemplaire = \"" . htmlentities($_POST['prix']) . "\"
                             WHERE idExemplaire = \"". htmlentities($_POST['exemplaire']) . "\";";
 
         if($ma_connexion_mysql!= NULL)
@@ -27,6 +27,12 @@ if (isset($_POST)
         $_SESSION['message'] = 	"L'exemplaire a bien été mis a jour !";
         header($adresse);
     }
+    else{ ?>
+    <div data-alert class="alert-box alert">
+        Merci de saisir tous les champs !
+        <a href="#" class="close">&times;</a>
+    </div>
+    <?php }
 }
 if (isset($_GET['exemplaire'])):
 
@@ -45,7 +51,7 @@ if (isset($_GET['exemplaire'])):
         <section>
             <div class="row">
                 <article class="panel large-12 medium-12 small-12 columns" >
-                    <form action="exemplaireUpdate.php?exemplaire=<?=$_GET['exemplaire'] ?>" method="post">
+                    <form action="exemplaireUpdate.php?exemplaire=<?php echo $_GET['exemplaire']; ?>" method="post">
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
                             <h2>Modifier l'exemplaire <?php echo $row['idExemplaire']; ?> du livre "<?php echo $row['titreOeuvre'];?>"</h2>

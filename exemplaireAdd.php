@@ -25,8 +25,6 @@ if (isset($_POST)
             . htmlentities($_POST['oeuvre'])
             . "\");";
 
-        echo $ma_commande_SQL;
-
         if($ma_connexion_mysql!= NULL)
         {
             $rbzrb=$ma_connexion_mysql->exec($ma_commande_SQL);
@@ -63,7 +61,7 @@ if (isset($_GET['oeuvre'])):
                 <?php foreach ($donnees as $row ): ?>
                 <h2>Ajouter un exemplaire du livre "<?php echo $row['titreOeuvre']; ?>"</h2>
                 <?php endforeach; ?>
-                <form action="exemplaireAdd.php" method="post">
+                <form action="exemplaireAdd.php?oeuvre=<?php echo $_GET['oeuvre']; ?>" method="post">
                     <div class="row">
                         <div class="large-4 medium-4 small-4 columns">
                             <select name="etat" id="etat">
