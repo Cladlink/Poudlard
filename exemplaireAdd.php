@@ -42,12 +42,27 @@ if (isset($_POST)
         </div>
         <?php
     endif;
-endif; ?>
+endif;
+
+if (isset($_GET['oeuvre'])):
+
+    if (!empty($_GET['oeuvre'])):
+
+        $ma_commande_SQL = "SELECT OEUVRE.titreOeuvre
+        FROM OEUVRE
+        WHERE idOeuvre = \"" . htmlentities($_GET['oeuvre']) . "\";";
+
+        $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
+        $donnees = $reponse->fetchAll();
+    ?>
+
     <h1>Exemplaire</h1>
     <section>
         <div class="row">
             <article class="panel large-12 medium-12 small-12 columns" >
-                <h2>Ajouter un exemplaire</h2>
+                <?php foreach ($donnees as $row ): ?>
+                <h2>Ajouter un exemplaire du livre "<?php echo $row['titreOeuvre']; ?>"</h2>
+                <?php endforeach; ?>
                 <form action="exemplaireAdd.php" method="post">
                     <div class="row">
                         <div class="large-4 medium-4 small-4 columns">
@@ -72,4 +87,7 @@ endif; ?>
             </article>
         </div>
     </section>
-<?php include "Footer.php";
+        <?php
+    endif;
+endif;
+include "Footer.php"; ?>

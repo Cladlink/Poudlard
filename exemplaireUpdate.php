@@ -33,8 +33,9 @@ if (isset($_GET['exemplaire'])):
     if (!empty($_GET['exemplaire'])):
 
 
-        $ma_commande_SQL = "SELECT *
+        $ma_commande_SQL = "SELECT *, OEUVRE.titreOeuvre
                     FROM EXEMPLAIRE
+                    JOIN OEUVRE ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
                     WHERE idExemplaire = \"" . htmlentities($_GET['exemplaire']) . "\";";
 
         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
@@ -44,11 +45,10 @@ if (isset($_GET['exemplaire'])):
         <section>
             <div class="row">
                 <article class="panel large-12 medium-12 small-12 columns" >
-                    <h2>Modifier un exemplaire</h2>
                     <form action="exemplaireUpdate.php?exemplaire=<?=$_GET['exemplaire'] ?>" method="post">
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
-
+                            <h2>Modifier l'exemplaire <?php echo $row['idExemplaire']; ?> du livre "<?php echo $row['titreOeuvre'];?>"</h2>
                             <div class="large-4 medium-4 small-4 columns">
                                 <select name="etat" id="etat">
                                     <?php
@@ -71,10 +71,10 @@ if (isset($_GET['exemplaire'])):
                                 </select>
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="text" placeholder="<?= $row['prixExemplaire'] ?>" id="prix" name="prix" value="<?=$row['prixExemplaire'] ?>">
+                                <input type="text" placeholder="Prix" id="prix" name="prix" value="<?=$row['prixExemplaire'] ?>">
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="date" placeholder="<?=$row['dateAchatExemplaire'] ?>" id="dateAchat" name="dateAchat" value="<?=$row['dateAchatExemplaire'] ?>">
+                                <input type="date" placeholder="Date d'achat" id="dateAchat" name="dateAchat" value="<?=$row['dateAchatExemplaire'] ?>">
                             <div>
                                 <input type="hidden" value="<?= $row['idOeuvre'] ?>" id="oeuvre" name="oeuvre">
                             </div>

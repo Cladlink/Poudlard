@@ -50,13 +50,13 @@ if (isset($_GET['adherent'])):
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="text" placeholder="<?= $row['nomAdherent'] ?>" id="nomAdherent" name="nomAdherent" value="<?=$row['nomAdherent'] ?>">
+                                <input type="text" placeholder="Nom de l'auteur" id="nomAdherent" name="nomAdherent" value="<?=$row['nomAdherent'] ?>">
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="text" placeholder="<?=$row['adresseAdherent'] ?>" id="adresseAdherent" name="adresseAdherent" value="<?=$row['adresseAdherent'] ?>">
+                                <input type="text" placeholder="Adresse" id="adresseAdherent" name="adresseAdherent" value="<?=$row['adresseAdherent'] ?>">
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="date" placeholder="<?=$row['datePaiementAdherent'] ?>" id="dateAdhesion" name="dateAdhesion" value="<?=$row['datePaiementAdherent'] ?>">
+                                <input type="date" placeholder="Date d'adhesion" id="dateAdhesion" name="dateAdhesion" value="<?=$row['datePaiementAdherent'] ?>">
                             </div>
                             <?php endforeach;?>
                         </div>

@@ -50,10 +50,10 @@ if (isset($_GET['oeuvre'])):
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
                                 <div class="large-4 medium-4 small-4 columns">
-                                    <input type="text" placeholder="<?= $row['titreOeuvre'] ?>" id="titreLivre" name="titreLivre" value="<?=$row['titreOeuvre'] ?>">
+                                    <input type="text" placeholder="Titre du livre" id="titreLivre" name="titreLivre" value="<?=$row['titreOeuvre'] ?>">
                                 </div>
                                 <div class="large-4 medium-4 small-4 columns">
-                                    <input type="date" placeholder="<?=$row['dateParutionOeuvre'] ?>" id="dateParution" name="dateParution" value="<?=$row['dateParutionOeuvre'] ?>">
+                                    <input type="date" placeholder="Date de parution" id="dateParution" name="dateParution" value="<?=$row['dateParutionOeuvre'] ?>">
                                 </div>
                                 <div class="large-4 medium-4 small-4 columns">
                                     <select name="idAuteur" id="idAuteur">

@@ -25,7 +25,6 @@ endif; ?>
         <article class=" panel large-12 medium-12 small-12 columns">
             <?php $addrAdd = "exemplaireAdd.php?oeuvre=" . $_GET['oeuvre'];?>
             <a href="<?=$addrAdd?>"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
-            <h2 >Liste des exemplaires</h2>
             <?php
             if(isset($_GET['oeuvre'])):
 
@@ -34,13 +33,18 @@ endif; ?>
                     $ma_commande_SQL = "SELECT EXEMPLAIRE.idExemplaire,
                                         EXEMPLAIRE.etatExemplaire,
                                         EXEMPLAIRE.dateAchatExemplaire,
-                                        EXEMPLAIRE.prixExemplaire
+                                        EXEMPLAIRE.prixExemplaire,
+                                        OEUVRE.titreOeuvre
                                         FROM EXEMPLAIRE
+                                        JOIN OEUVRE ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
                                         WHERE EXEMPLAIRE.idOeuvre = " . htmlentities($_GET['oeuvre']) . "
                                         ORDER BY idExemplaire;";
                     include "php/connexion.php";
                     $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
-                    $donnees = $reponse->fetchAll();?>
+                    $donnees = $reponse->fetchAll();
+                    ?>
+                    <h2>Liste des exemplaires du livre : "<?php echo $donnees[0]['titreOeuvre']; ?>"</h2>
+
                     <table>
                         <thead>
                         <th>ID Exemplaire</th>

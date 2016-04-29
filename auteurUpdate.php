@@ -46,10 +46,10 @@ if (isset($_GET['auteur'])):
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
                                 <div class="large-4 medium-4 small-4 columns">
-                                    <input type="text" placeholder="<?= $row['nomAuteur'] ?>" id="nomAuteur" name="nomAuteur" value="<?=$row['nomAuteur'] ?>">
+                                    <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur" value="<?=$row['nomAuteur'] ?>">
                                 </div>
                                 <div class="large-4 medium-4 small-4 columns">
-                                    <input type="text" placeholder="<?=$row['prenomAuteur'] ?>" id="prenomAuteur" name="prenomAuteur" value="<?=$row['prenomAuteur'] ?>">
+                                    <input type="text" placeholder="Prenom de l'auteur" id="prenomAuteur" name="prenomAuteur" value="<?=$row['prenomAuteur'] ?>">
                                 </div>
                             <?php endforeach;?>
                         </div>

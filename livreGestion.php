@@ -77,8 +77,7 @@ endif; ?>
                                             AUTEUR.nomAuteur,
                                             OEUVRE.dateParutionOeuvre
                                     FROM OEUVRE
-                                    JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur
-                                    " . $where . "
+                                    JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur " . $where . "
                                     ORDER BY AUTEUR.nomAuteur, OEUVRE.titreOeuvre;";
             }
             else
@@ -107,7 +106,7 @@ endif; ?>
             <?php foreach ($donnees as $row) :
                 $addrUpdate = "livreUpdate.php?oeuvre=" . $row['idOeuvre'];
                 $addrDelete = "livreSupprimer.php?oeuvre=" . $row['idOeuvre'];
-                $addrExemplaire = "exemplaireGestion.php?oeuvre=" . $row["idOeuvre"];
+                $addrExemplaire = "exemplaireGestion.php?oeuvre=" . $row['idOeuvre'];
                 ?><tr>
                 <td><?= $row['idOeuvre'] ?></td>
                 <td><?= $row['titreOeuvre']; ?></td>
