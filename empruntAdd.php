@@ -82,6 +82,7 @@ if(isset( $_SESSION['messageError'])): ?>
                         <div class="large-4 medium-4 small-4 columns">
                             <label for="idAdherent">nom de l'adherent</label>
                             <select name="idAdherent" id="idAdherent">
+                                <option value="">Choisir un adhérent</option>
                                 <?php
                                 $ma_commande_SQL = "SELECT idAdherent, nomAdherent FROM adherent;";
                                 $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
@@ -94,6 +95,7 @@ if(isset( $_SESSION['messageError'])): ?>
                         <div class="large-4 medium-4 small-4 columns">
                             <label for="idExemplaire">Exemplaires disponible</label>
                             <select name="idExemplaire" id="idExemplaire">
+                                <option value="">Choisir un exemplaire</option>
                                 <?php
                                 $ma_commande_SQL = "SELECT EXEMPLAIRE.idExemplaire, OEUVRE.titreOeuvre, exemplaire.idExemplaire, exemplaire.etatExemplaire
                                                     FROM EXEMPLAIRE

@@ -65,6 +65,7 @@ if (isset($_GET['oeuvre'])):
                     <div class="row">
                         <div class="large-4 medium-4 small-4 columns">
                             <select name="etat" id="etat">
+                                <option value="">Choisir l'état du livre</option>
                                 <option value="EXCELLENT">EXCELLENT</option>
                                 <option value="BON">BON</option>
                                 <option value="MOYEN">MOYEN</option>

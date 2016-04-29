@@ -50,6 +50,7 @@ endif; ?>
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
                         <select name="idAuteur" id="idAuteur">
+                            <option value="">Choisir un auteur</option>
                             <?php
                             $ma_commande_SQL = "SELECT AUTEUR.nomAuteur, AUTEUR.idAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;";
                             $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
