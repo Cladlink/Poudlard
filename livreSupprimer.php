@@ -6,9 +6,10 @@ if (isset($_GET['oeuvre']))
 {
     if (!empty($_GET['oeuvre']))
     {
-        $ma_commande_SQL = "SELECT *
+        $ma_commande_SQL = "SELECT EXEMPLAIRE.idExemplaire, OEUVRE.titreOeuvre
                             FROM EXEMPLAIRE
-                            WHERE EXEMPLAIRE.idOeuvre = " . htmlentities($_GET['oeuvre']) . ";";
+                            JOIN OEUVRE ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
+                            WHERE OEUVRE.idOeuvre = " . htmlentities($_GET['oeuvre']) . ";";
         $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
         $donnees = $reponse->fetchAll();
         if(!$donnees)
@@ -23,7 +24,17 @@ if (isset($_GET['oeuvre']))
         }
         else
         {
-            $_SESSION['messageError'] = "Ce livre ne peut pas être supprimé car des exemplaires existent ! ";
+            foreach($donnees as $row)
+            {
+                $titreLivre = $row['titreOeuvre'];
+                $exemplaires[] = $row['idExemplaire'];
+                $nbLignes += 1;
+            }
+            $_SESSION['messageError'] = "Le livre \"" . $titreLivre . "\" ne peut pas être supprimé car des exemplaires existent : <br/> ";
+            for($i=0; $i<$nbLignes; $i++)
+            {
+                $_SESSION['messageError'] = $_SESSION['messageError'] . "L'exemplaire numéro " . $exemplaires[$i] . " existe <br/>";
+            }
         }
         header('location: livreGestion.php');
     }

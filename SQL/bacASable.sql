@@ -4,3 +4,11 @@ UPDATE EXEMPLAIRE SET etatExemplaire = "BON", dateAchatExemplaire = "2015-02-23"
 
 SELECT OEUVRE.idOeuvre,OEUVRE.titreOeuvre,AUTEUR.nomAuteur,OEUVRE.dateParutionOeuvre
 FROM OEUVRE JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur;
+
+SELECT ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt FROM EMPRUNT
+JOIN ADHERENT ON EMPRUNT.idAdherent = ADHERENT.idAdherent
+JOIN EXEMPLAIRE ON EMPRUNT.idExemplaire = EXEMPLAIRE.idExemplaire
+JOIN OEUVRE ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
+WHERE EMPRUNT.dateRendu IS NULL
+AND adherent.idAdherent = 1
+ORDER BY ADHERENT.nomAdherent;
