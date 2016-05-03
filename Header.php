@@ -26,6 +26,7 @@
 				<section class="top-bar-section">
 					<ul class="left">
 						<li class="active"><a href="recherche.php">Recherche</a></li>
+						<?php if (isset($_SESSION['droit']) && $_SESSION['droit'] == 'admin') : ?>
 						<li class="has-dropdown active"><a href="#">Emprunt</a>
 						<ul class="dropdown">
 							<li class="active"><a  href="empruntGestion.php">Emprunts / rendus</a></li>
@@ -35,12 +36,12 @@
 						<li class="active"><a href="livreGestion.php">Livre</a></li>
 						<li class="active"><a href="adherentGestion.php">Adhérent</a></li>
 						<li class="active"><a href="auteurGestion.php">Auteur</a></li>
+					<?php endif; ?>
 					</ul>
 
 					<ul class="right">
 						<?php if(isset($_SESSION['droit'])) : ?>
-							<li class="active" style="color: yellow">Bonjour <?php echo $_SESSION['login']; ?></li>
-							<a href="User_disconnect.php?deconnexion=deconnexion">se deconnecter</a>
+                            <li class="active"><a href="User_disconnect.php?deconnexion=deconnexion">se deconnecter</a></li>
 						<?php else: ?>
 							<li class="active"><a href="User_connect.php">se connecter </a></li>
 						<?php endif; ?>
@@ -48,7 +49,3 @@
 				</section>
 			</nav>
 		</div>
-<?php if (isset($_SESSION['login'])) echo $_SESSION['login'];
- if (isset($_SESSION['droit'])) echo $_SESSION['droit'];
-echo "coucou";
-
