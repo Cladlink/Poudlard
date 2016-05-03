@@ -42,10 +42,10 @@ endif; ?>
                 <form action="auteurAdd.php" method="post">
                     <div class="row">
                         <div class="large-4 medium-4 small-4 columns">
-                            <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur">
+                            <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur" <?php if(isset($_POST['nomAuteur']) && !empty($_POST['nomAuteur'])) echo "value=".$_POST['nomAuteur']; ?>>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
-                            <input type="text" placeholder="Prenom de l'auteur" id="prenomAuteur" name="prenomAuteur">
+                            <input type="text" placeholder="Prenom de l'auteur" id="prenomAuteur" name="prenomAuteur" <?php if(isset($_POST['prenomAuteur']) && !empty($_POST['prenomAuteur'])) echo "value=".$_POST['prenomAuteur']; ?>>
                         </div>
                     </div>
                     <button class="arrondi" type="submit">Ajouter</button>

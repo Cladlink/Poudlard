@@ -46,13 +46,13 @@ endif; ?>
             <form action="adherentAdd.php" method="post">
                 <div class="row">
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="text" placeholder="Nom de l'adherent" id="nomAdherent" name="nomAdherent">
+                        <input type="text" placeholder="Nom de l'adherent" id="nomAdherent" name="nomAdherent" <?php if(isset($_POST['nomAdherent']) && !empty($_POST['nomAdherent'])) echo "value=".$_POST['nomAdherent']; ?>>
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="text" placeholder="Adresse de l'adhérent" id="adresseAdherent" name="adresseAdherent">
+                        <input type="text" placeholder="Adresse de l'adhérent" id="adresseAdherent" name="adresseAdherent" <?php if(isset($_POST['adresseAdherent']) && !empty($_POST['adresseAdherent'])) echo "value=".$_POST['adresseAdherent']; ?>>
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion"  value="<?=date("Y-m-d")?>" >
+                        <input type="date" placeholder="Date Adhésion" id="dateAdhesion" name="dateAdhesion"  <?php if(isset($_POST['dateAdhesion']) && !empty($_POST['dateAdhesion'])) echo "value=".$_POST['dateAdhesion']; else echo "value=".date("Y-m-d");?>>
                     </div>
                 </div>
                 <button class="arrondi" type="submit">Ajouter</button>

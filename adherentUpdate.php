@@ -26,6 +26,12 @@ if (isset($_POST['nomAdherent'])
         $_SESSION['message'] = 	"l'adherent " . htmlentities($_POST['nomAdherent']) . " a bien été mis à jour !";
         header('location: adherentGestion.php');
     }
+    else{ ?>
+    <div data-alert class="alert-box alert">
+        Merci de saisir tous les champs !
+        <a href="#" class="close">&times;</a>
+    </div>
+    <?php }
 }
 if (isset($_GET['adherent'])):
 
@@ -50,13 +56,13 @@ if (isset($_GET['adherent'])):
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="text" placeholder="Nom de l'auteur" id="nomAdherent" name="nomAdherent" value="<?=$row['nomAdherent'] ?>">
+                                <input type="text" placeholder="Nom de l'auteur" id="nomAdherent" name="nomAdherent" value="<?php if(isset($_POST['nomAdherent']) && !empty($_POST['nomAdherent'])) echo $_POST['nomAdherent']; else echo $row['nomAdherent']; ?>">
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="text" placeholder="Adresse" id="adresseAdherent" name="adresseAdherent" value="<?=$row['adresseAdherent'] ?>">
+                                <input type="text" placeholder="Adresse" id="adresseAdherent" name="adresseAdherent" value="<?php if(isset($_POST['adresseAdherent']) && !empty($_POST['adresseAdherent'])) echo $_POST['adresseAdherent']; else echo $row['adresseAdherent']; ?>">
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="date" placeholder="Date d'adhesion" id="dateAdhesion" name="dateAdhesion" value="<?=$row['datePaiementAdherent'] ?>">
+                                <input type="date" placeholder="Date d'adhesion" id="dateAdhesion" name="dateAdhesion" value="<?php if(isset($_POST['dateAdhesion']) && !empty($_POST['dateAdhesion'])) echo $_POST['dateAdhesion']; else echo $row['datePaiementAdherent']; ?>">
                             </div>
                             <?php endforeach;?>
                         </div>

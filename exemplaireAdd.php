@@ -66,14 +66,14 @@ if (isset($_GET['oeuvre'])):
                         <div class="large-4 medium-4 small-4 columns">
                             <select name="etat" id="etat">
                                 <option value="">Choisir l'état du livre</option>
-                                <option value="EXCELLENT">EXCELLENT</option>
-                                <option value="BON">BON</option>
-                                <option value="MOYEN">MOYEN</option>
-                                <option value="MAUVAIS">MAUVAIS</option>
+                                <option value="EXCELLENT" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="EXCELLENT") echo "selected"; ?>>EXCELLENT</option>
+                                <option value="BON" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="BON") echo "selected"; ?>>BON</option>
+                                <option value="MOYEN" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="MOYEN") echo "selected"; ?>>MOYEN</option>
+                                <option value="MAUVAIS" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="MAUVAIS") echo "selected"; ?>>MAUVAIS</option>
                             </select>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
-                            <input type="text" placeholder="Prix" id="prix" name="prix">
+                            <input type="text" placeholder="Prix" id="prix" name="prix" <?php if(isset($_POST['prix']) && !empty($_POST['prix'])) echo "value=".$_POST['prix']; ?>>
                         </div>
                         <div class="large-4 medium-4 small-4 columns">
                             <input type="date" placeholder="Date d'achat" id="dateAchat" name="dateAchat" value="<?=date("Y-m-d")?>" >

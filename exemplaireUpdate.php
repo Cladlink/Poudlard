@@ -70,17 +70,17 @@ if (isset($_GET['exemplaire'])):
                                         $mauvais = "selected";
                                     ?>
 
-                                    <option value="EXCELLENT" <?php echo $excellent; ?>>EXCELLENT</option>
-                                    <option value="BON" <?php echo $bon; ?>>BON</option>
-                                    <option value="MOYEN" <?php echo $moyen; ?>>MOYEN</option>
-                                    <option value="MAUVAIS" <?php echo $mauvais; ?>>MAUVAIS</option>
+                                    <option value="EXCELLENT" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="EXCELLENT") echo "selected"; else echo $excellent; ?>>EXCELLENT</option>
+                                    <option value="BON" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="BON") echo "selected"; echo $bon; ?>>BON</option>
+                                    <option value="MOYEN" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="MOYEN") echo "selected"; echo $moyen; ?>>MOYEN</option>
+                                    <option value="MAUVAIS" <?php if(isset($_POST['etat']) && !empty($_POST['etat']) && $_POST['etat']=="MAUVAIS") echo "selected"; echo $mauvais; ?>>MAUVAIS</option>
                                 </select>
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="text" placeholder="Prix" id="prix" name="prix" value="<?=$row['prixExemplaire'] ?>">
+                                <input type="text" placeholder="Prix" id="prix" name="prix" value="<?php if(isset($_POST['prix']) && !empty($_POST['prix'])) echo $_POST['prix']; else echo $row['prixExemplaire']; ?>">
                             </div>
                             <div class="large-4 medium-4 small-4 columns">
-                                <input type="date" placeholder="Date d'achat" id="dateAchat" name="dateAchat" value="<?=$row['dateAchatExemplaire'] ?>">
+                                <input type="date" placeholder="Date d'achat" id="dateAchat" name="dateAchat" value="<?php if(isset($_POST['dateAchat']) && !empty($_POST['dateAchat'])) echo $_POST['dateAchat']; else echo $row['dateAchatExemplaire']; ?>">
                             <div>
                                 <input type="hidden" value="<?= $row['idOeuvre'] ?>" id="oeuvre" name="oeuvre">
                             </div>

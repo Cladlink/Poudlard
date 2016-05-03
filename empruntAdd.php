@@ -88,7 +88,7 @@ if(isset( $_SESSION['messageError'])): ?>
                                 $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
                                 $donnees = $reponse->fetchAll();
                                 foreach($donnees as $row): ?>
-                                    <option value="<?= $row['idAdherent']?>"><?= $row['nomAdherent']?></option>
+                                    <option value="<?= $row['idAdherent']?>" <?php if(isset($_POST['idAdherent']) && !empty($_POST['idAdherent']) && $row['idAdherent']==$_POST['idAdherent']) echo "selected"; ?>><?= $row['nomAdherent']?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -113,7 +113,7 @@ if(isset( $_SESSION['messageError'])): ?>
                                     $titre = $row['idExemplaire'] . " - " . $row['titreOeuvre'] . " - " . $row['etatExemplaire'];
                                     ?>
 
-                                    <option value="<?= $row['idExemplaire']?>"><?= $titre ?></option>
+                                    <option value="<?= $row['idExemplaire']?>" <?php if(isset($_POST['idExemplaire']) && !empty($_POST['idExemplaire']) && $row['idExemplaire']==$_POST['idExemplaire']) echo "selected"; ?>><?= $titre ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

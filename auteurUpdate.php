@@ -20,9 +20,15 @@ if (isset($_POST['nomAuteur'])
             $nbr_lignes_affectees=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $_SESSION['message'] = 	"l'auteur " . htmlentities($_POST['nomAuteur']) . " a bien été mis à jour !";
+        $_SESSION['message'] = 	"L'auteur " . htmlentities($_POST['nomAuteur']) . " a bien été mis à jour !";
         header('location: auteurGestion.php');
     }
+    else{ ?>
+        <div data-alert class="alert-box alert">
+            Merci de saisir tous les champs !
+            <a href="#" class="close">&times;</a>
+        </div>
+    <?php }
 }
 if (isset($_GET['auteur'])):
 
@@ -46,10 +52,10 @@ if (isset($_GET['auteur'])):
                         <div class="row">
                             <?php foreach ($donnees as $row ): ?>
                                 <div class="large-4 medium-4 small-4 columns">
-                                    <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur" value="<?=$row['nomAuteur'] ?>">
+                                    <input type="text" placeholder="Nom de l'auteur" id="nomAuteur" name="nomAuteur" value="<?php if(isset($_POST['nomAuteur']) && !empty($_POST['nomAuteur'])) echo $_POST['nomAuteur']; else echo $row['nomAuteur']; ?>">
                                 </div>
                                 <div class="large-4 medium-4 small-4 columns">
-                                    <input type="text" placeholder="Prenom de l'auteur" id="prenomAuteur" name="prenomAuteur" value="<?=$row['prenomAuteur'] ?>">
+                                    <input type="text" placeholder="Prenom de l'auteur" id="prenomAuteur" name="prenomAuteur" value="<?php if(isset($_POST['prenomAuteur']) && !empty($_POST['prenomAuteur'])) echo $_POST['prenomAuteur']; else echo $row['prenomAuteur']; ?>">
                                 </div>
                             <?php endforeach;?>
                         </div>

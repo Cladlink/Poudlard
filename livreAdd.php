@@ -4,16 +4,16 @@ include "Header.php";
 include "php/connexion.php";
 
 if(isset($_POST)
-    && isset($_POST['titreLivre'])
+    && isset($_POST['titre'])
     && isset($_POST['idAuteur'])
     && isset($_POST['dateParution'])):
 
-    if(!empty($_POST['titreLivre'])
+    if(!empty($_POST['titre'])
         && !empty($_POST['idAuteur'])
         && !empty($_POST['dateParution'])):
 
         $ma_commande_SQL = "INSERT INTO OEUVRE VALUES (NULL, \""
-            . htmlentities($_POST['titreLivre'])
+            . htmlentities($_POST['titre'])
             . "\", \"" . htmlentities($_POST['dateParution'])
             . "\", \"" . htmlentities($_POST['idAuteur'])
             . "\");";
@@ -25,11 +25,8 @@ if(isset($_POST)
             $rbzrb=$ma_connexion_mysql->exec($ma_commande_SQL);
         }
 
-        $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titreLivre']) . "\" a bien été créé !";
+        $_SESSION['message'] = 	"Le livre \"" . htmlentities($_POST['titre']) . "\" a bien été créé !";
         header('location: livreGestion.php');
-
-
-
 
     else: ?>
     <div data-alert class="alert-box alert">
@@ -46,7 +43,7 @@ endif; ?>
             <form action="livreAdd.php" method="post">
                 <div class="row">
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="text" placeholder="Titre du livre" id="titreLivre" name="titreLivre">
+                        <input type="text" placeholder="Titre du livre" id="titre" name="titre" <?php if(isset($_POST['titre']) && !empty($_POST['titre'])) echo "value=".$_POST['titre']; ?>>
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
                         <select name="idAuteur" id="idAuteur">
@@ -58,12 +55,12 @@ endif; ?>
                             foreach($donnees as $row):
                                 $nomAuteur = $row['nomAuteur'];
                                 ?>
-                                <option value="<?= $row['idAuteur']?>"><?= $nomAuteur ?></option>
+                                <option value="<?= $row['idAuteur']?>" <?php if(isset($_POST['idAuteur']) && !empty($_POST['idAuteur']) && $row['idAuteur']==$_POST['idAuteur']) echo "selected"; ?>><?= $nomAuteur ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="large-4 medium-4 small-4 columns">
-                        <input type="date" placeholder="Date de parution" id="dateParution" name="dateParution">
+                        <input type="date" placeholder="Date de parution" id="dateParution" name="dateParution" <?php if(isset($_POST['dateParution']) && !empty($_POST['dateParution'])) echo "value=".$_POST['dateParution']; ?>>
                     </div>
                 </div>
                 <button class="arrondi" type="submit">Ajouter</button>
