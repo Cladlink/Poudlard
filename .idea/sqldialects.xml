@@ -3,6 +3,8 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/SQL/bacasable.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/SQL/requetes.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/SQL/users.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/User_connect.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/adherentAdd.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/adherentGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/adherentSupprimer.php" dialect="MySQL" />

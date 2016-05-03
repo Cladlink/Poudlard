@@ -36,6 +36,19 @@
 						<li class="active"><a href="adherentGestion.php">Adhérent</a></li>
 						<li class="active"><a href="auteurGestion.php">Auteur</a></li>
 					</ul>
+
+					<ul class="right">
+						<?php if(isset($_SESSION['droit'])) : ?>
+							<li class="active" style="color: yellow">Bonjour <?php echo $_SESSION['login']; ?></li>
+							<a href="User_disconnect.php?deconnexion=deconnexion">se deconnecter</a>
+						<?php else: ?>
+							<li class="active"><a href="User_connect.php">se connecter </a></li>
+						<?php endif; ?>
+					</ul>
 				</section>
 			</nav>
 		</div>
+<?php if (isset($_SESSION['login'])) echo $_SESSION['login'];
+ if (isset($_SESSION['droit'])) echo $_SESSION['droit'];
+echo "coucou";
+

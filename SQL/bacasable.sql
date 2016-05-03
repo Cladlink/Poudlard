@@ -82,3 +82,4 @@ FROM ADHERENT
 WHERE ADHERENT.datePaimentAdherent like "2015-11-03";
 
 SELECT AUTEUR.nomAuteur, AUTEUR.idAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;
+SELECT * FROM users;
