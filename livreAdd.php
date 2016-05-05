@@ -49,13 +49,13 @@ endif; ?>
                         <select name="idAuteur" id="idAuteur">
                             <option value="">Choisir un auteur</option>
                             <?php
-                            $ma_commande_SQL = "SELECT AUTEUR.nomAuteur, AUTEUR.idAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;";
+                            $ma_commande_SQL = "SELECT AUTEUR.nomAuteur, AUTEUR.prenomAuteur, AUTEUR.idAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;";
                             $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
                             $donnees = $reponse->fetchAll();
                             foreach($donnees as $row):
-                                $nomAuteur = $row['nomAuteur'];
+                                $auteur = $row['nomAuteur'] . " " . $row['prenomAuteur'];
                                 ?>
-                                <option value="<?= $row['idAuteur']?>" <?php if(isset($_POST['idAuteur']) && !empty($_POST['idAuteur']) && $row['idAuteur']==$_POST['idAuteur']) echo "selected"; ?>><?= $nomAuteur ?></option>
+                                <option value="<?= $row['idAuteur']?>" <?php if(isset($_POST['idAuteur']) && !empty($_POST['idAuteur']) && $row['idAuteur']==$_POST['idAuteur']) echo "selected"; ?>><?= $auteur ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

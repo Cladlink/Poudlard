@@ -30,20 +30,26 @@ endif; ?>
 
                 if(!empty($_GET['oeuvre'])):
 
+                    include "php/connexion.php";
+                    $ma_commande_SQL_titre = "SELECT OEUVRE.titreOeuvre FROM OEUVRE WHERE OEUVRE.idOeuvre = "
+                        . htmlentities($_GET['oeuvre']) . ";";
+
+                    $reponses = $ma_connexion_mysql->query($ma_commande_SQL_titre);
+                    $donneesTitre = $reponses->fetchAll();?>
+
+                    <h2>Liste des exemplaires du livre : "<?php echo $donneesTitre[0]['titreOeuvre']; ?>"</h2>
+
+
+                    <?php
                     $ma_commande_SQL = "SELECT EXEMPLAIRE.idExemplaire,
                                         EXEMPLAIRE.etatExemplaire,
                                         EXEMPLAIRE.dateAchatExemplaire,
-                                        EXEMPLAIRE.prixExemplaire,
-                                        OEUVRE.titreOeuvre
+                                        EXEMPLAIRE.prixExemplaire
                                         FROM EXEMPLAIRE
-                                        JOIN OEUVRE ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
                                         WHERE EXEMPLAIRE.idOeuvre = " . htmlentities($_GET['oeuvre']) . "
                                         ORDER BY idExemplaire;";
-                    include "php/connexion.php";
                     $reponse = $ma_connexion_mysql->query($ma_commande_SQL);
-                    $donnees = $reponse->fetchAll();
-                    ?>
-                    <h2>Liste des exemplaires du livre : "<?php echo $donnees[0]['titreOeuvre']; ?>"</h2>
+                    $donnees = $reponse->fetchAll();?>
 
                     <table>
                         <thead>
@@ -54,6 +60,7 @@ endif; ?>
                         <th>Modifier</th>
                         <th>Supprimer</th>
                         </thead>
+
                         <?php foreach ($donnees as $row) :
 
                             $date = date_parse($row['dateAchatExemplaire']);
