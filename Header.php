@@ -36,6 +36,7 @@
 						<li class="active"><a href="livreGestion.php">Livre</a></li>
 						<li class="active"><a href="adherentGestion.php">Adhérent</a></li>
 						<li class="active"><a href="auteurGestion.php">Auteur</a></li>
+						<li class="active"><a href="statGestion.php">Infos</a></li>
 					<?php endif; ?>
 					</ul>
 

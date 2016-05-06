@@ -72,22 +72,29 @@ endif; ?>
                             $where = $where . " AND OEUVRE.dateParutionOeuvre LIKE \"" . htmlentities($_POST['dateParution']) . "%\"";
                 }
 
-                $ma_commande_SQL = "SELECT OEUVRE.idOeuvre,
+                $ma_commande_SQL = "SELECT COUNT(EXEMPLAIRE.idExemplaire) as nbExemplaire,
+                                            OEUVRE.idOeuvre,
                                             OEUVRE.titreOeuvre,
                                             AUTEUR.nomAuteur,
                                             OEUVRE.dateParutionOeuvre
                                     FROM OEUVRE
-                                    JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur " . $where . "
+                                    JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur
+                                    JOIN EXEMPLAIRE ON OEUVRE.idOeuvre = EXEMPLAIRE.idOeuvre
+                                    " . $where . "
+                                    GROUP BY OEUVRE.titreOeuvre
                                     ORDER BY AUTEUR.nomAuteur, OEUVRE.titreOeuvre;";
             }
             else
             {
-                $ma_commande_SQL = "SELECT OEUVRE.idOeuvre,
-                                            OEUVRE.titreOeuvre,
-                                           AUTEUR.nomAuteur,
-                                            OEUVRE.dateParutionOeuvre
+                $ma_commande_SQL = "SELECT COUNT(EXEMPLAIRE.idExemplaire) as nbExemplaire,
+                                          OEUVRE.idOeuvre,
+                                          OEUVRE.titreOeuvre,
+                                          AUTEUR.nomAuteur,
+                                          OEUVRE.dateParutionOeuvre
                                         FROM OEUVRE
                                         JOIN AUTEUR ON OEUVRE.idAuteur = AUTEUR.idAuteur
+                                        JOIN EXEMPLAIRE ON OEUVRE.idOeuvre = EXEMPLAIRE.idOeuvre
+                                        GROUP BY OEUVRE.titreOeuvre
                                         ORDER BY AUTEUR.nomAuteur, OEUVRE.titreOeuvre;";
             }
 
@@ -95,13 +102,16 @@ endif; ?>
             $donnees = $reponse->fetchAll();?>
             <table>
                 <thead>
-                <th>ID Oeuvre</th>
-                <th>Titre</th>
-                <th>Nom Auteur</th>
-                <th>Date de parution</th>
-                <th>Accéder aux exemplaires</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
+                    <tr>
+                        <th>ID Oeuvre</th>
+                        <th>Titre</th>
+                        <th>Nom Auteur</th>
+                        <th>Date de parution</th>
+                        <th>Nombre d'exemplaire</th>
+                        <th>Accéder aux exemplaires</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                    </tr>
                 </thead>
             <?php foreach ($donnees as $row) :
                 $date = date_parse($row['dateParutionOeuvre']);
@@ -114,6 +124,7 @@ endif; ?>
                 <td><?= $row['titreOeuvre']; ?></td>
                 <td><?= $row['nomAuteur']?></td>
                 <td><?= $dateParution?></td>
+                <td><?= $row['nbExemplaire']; ?></td>
                 <td><a href="<?= $addrExemplaire?>"><img class="icone" src="img/exemplaire.png" alt="icone exemplaire"></a></td>
                 <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
                 <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></a></td>

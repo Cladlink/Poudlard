@@ -25,5 +25,6 @@
     <file url="file://$PROJECT_DIR$/livreGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/livreSupprimer.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/livreUpdate.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/statGestion.php" dialect="MySQL" />
   </component>
 </project>
