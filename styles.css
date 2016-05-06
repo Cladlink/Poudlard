@@ -140,6 +140,9 @@ td
 .active a:hover {
 	background-color: #221122 !important;
 }
+.redBackground{
+	background-color: #FF0000 !important;
+}
 .scrollToTop{
 	display: none;
 }

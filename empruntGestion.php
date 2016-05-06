@@ -141,15 +141,14 @@ endif; ?>
                             ."&dateEmprunt="
                             . $row['dateEmprunt'];
 
-                        $date = date_parse($row['dateEmprunt']);
-                        $dateEmprunt = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
-
-                        $date = date_parse($row['dateRenduMax']);
-                        $dateRenduMax = $date['day'] . "/" . $date['month'] . "/" . $date['year'];
-
+                        $dateE = date_parse($row['dateEmprunt']);
+                        $dateEmprunt = $dateE['day'] . "/" . $dateE['month'] . "/" . $dateE['year'];
+                        $dateR = date_parse($row['dateRenduMax']);
+                        $dateRenduMax = $dateR['day'] . "/" . $dateR['month'] . "/" . $dateR['year'];
+                        echo date_diff(date_create(date("Y-m-d")), date_create($row['dateRenduMax']))->format('%a');
                         ?><tr>
                         <td><?= $row['idExemplaire']; ?></td>
-                        <td><?= $row['nomAdherent']; ?></td>
+                        <td <?php if( (date_diff(date_create(date("Y-m-d")), date_create($row['dateRenduMax']))->format('%a')) > 45) echo ' class ="redBackground" ';?> > <?= $row['nomAdherent']; ?></td>
                         <td><?= $row['titreOeuvre']; ?></td>
                         <td><?= $dateEmprunt?></td>
                         <td><?= $dateRenduMax?></td>
