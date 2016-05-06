@@ -83,3 +83,15 @@ WHERE ADHERENT.datePaimentAdherent like "2015-11-03";
 
 SELECT AUTEUR.nomAuteur, AUTEUR.idAuteur FROM AUTEUR ORDER BY AUTEUR.nomAuteur;
 SELECT * FROM users;
+
+DELETE FROM auteur  ;
+
+SELECT  ADHERENT.idAdherent,
+  ADHERENT.nomAdherent,
+  ADHERENT.adresseAdherent,
+  ADHERENT.datePaiementAdherent,
+  count(emprunt.idAdherent) as nbExemplaireEmprunte
+FROM    ADHERENT
+  LEFT JOIN emprunt
+    ON adherent.idAdherent = emprunt.idAdherent
+GROUP BY adherent.idAdherent;

@@ -73,17 +73,25 @@ endif; ?>
 
                     $ma_commande_SQL = "SELECT  AUTEUR.idAuteur,
                                                 AUTEUR.nomAuteur,
-                                                AUTEUR.prenomAuteur
-                                        FROM    AUTEUR "
+                                                AUTEUR.prenomAuteur,
+                                                count(oeuvre.idAuteur) as toto
+                                        FROM    AUTEUR
+                                        LEFT JOIN oeuvre
+                                        ON  auteur.idAuteur = oeuvre.idAuteur"
                         . $where
+                        . " GROUP BY auteur.idAuteur"
                         . " ORDER BY AUTEUR.nomAuteur;";
                 }
                 else
                 {
                     $ma_commande_SQL = "SELECT  AUTEUR.idAuteur,
                                                 AUTEUR.nomAuteur,
-                                                AUTEUR.prenomAuteur
-                                          FROM    AUTEUR
+                                                AUTEUR.prenomAuteur,
+                                                count(oeuvre.idAuteur) as nbOeuvre
+                                        FROM    AUTEUR
+                                        LEFT JOIN oeuvre
+                                        ON auteur.idAuteur = oeuvre.idAuteur
+                                        GROUP BY AUTEUR.idAuteur
                                         ORDER BY AUTEUR.nomAuteur;";
                 }
 
@@ -94,6 +102,7 @@ endif; ?>
                     <tr>
                         <th>Nom Auteur</th>
                         <th>Prénom Auteur</th>
+                        <th>Nombre de Livre</th>
                         <th>modifier</th>
                         <th>supprimer</th>
                     </tr>
@@ -103,6 +112,7 @@ endif; ?>
                         ?><tr>
                         <td><?= $row['nomAuteur']; ?></td>
                         <td><?= $row['prenomAuteur']?></td>
+                        <td><?= $row['nbOeuvre']?></td>
                         <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
                         <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></td>
                         </tr>

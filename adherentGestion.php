@@ -81,17 +81,25 @@ endif; ?>
                     $ma_commande_SQL = "SELECT  ADHERENT.idAdherent,
                                                 ADHERENT.nomAdherent,
                                                 ADHERENT.adresseAdherent,
-                                                ADHERENT.datePaiementAdherent
+                                                ADHERENT.datePaiementAdherent,
+                                                count(emprunt.idAdherent) as nbExemplaireEmprunte
                                         FROM    ADHERENT
-                                ". $where;
+                                        LEFT JOIN emprunt
+                                        ON adherent.idAdherent = emprunt.idAdherent"
+                                                . $where
+                    . " GROUP BY adherent.idAdherent;";
                 }
                 else
                 {
                     $ma_commande_SQL = "SELECT  ADHERENT.idAdherent,
                                                 ADHERENT.nomAdherent,
                                                 ADHERENT.adresseAdherent,
-                                                ADHERENT.datePaiementAdherent
-                                        FROM    ADHERENT";
+                                                ADHERENT.datePaiementAdherent,
+                                                count(emprunt.idAdherent) as nbExemplaireEmprunte
+                                        FROM    ADHERENT
+                                        LEFT JOIN emprunt
+                                        ON adherent.idAdherent = emprunt.idAdherent
+                                        GROUP BY adherent.idAdherent;";
                 }
 
                 include "php/connexion.php";
@@ -99,12 +107,13 @@ endif; ?>
                     $donnees = $reponse->fetchAll();?>
                     <table>
                         <tr>
-                        <th>ID Adherent</th>
-                        <th>Nom Adherent</th>
-                        <th>Adresse Adherent</th>
-                        <th>Date de paiement</th>
-                        <th>modifier</th>
-                        <th>supprimer</th>
+                            <th>ID Adherent</th>
+                            <th>Nom Adherent</th>
+                            <th>Adresse Adherent</th>
+                            <th>Date de paiement</th>
+                            <th>nombre d'exemplaire emprunté</th>
+                            <th>modifier</th>
+                            <th>supprimer</th>
                         </tr>
                         <?php foreach ($donnees as $row) :
                             $date = date_parse($row['datePaiementAdherent']);
@@ -115,7 +124,8 @@ endif; ?>
                             <td><?= $row['idAdherent'] ?></td>
                             <td><?= $row['nomAdherent']; ?></td>
                             <td><?= $row['adresseAdherent']?></td>
-                            <td><?= $datePaiement?></td>
+                            <td><?= $datePaiement ?></td>
+                            <td><?= $row['nbExemplaireEmprunte'] ?></td>
                             <td><a href="<?= $addrUpdate?>"><img class="icone" src="img/modifier.png" alt="icone modifier"></a></td>
                             <td><a href="<?= $addrDelete?>"><img class="icone" src="img/supprimer.png" alt="croix rouge"></td>
                             </tr>
