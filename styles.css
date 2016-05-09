@@ -47,6 +47,7 @@ h2 {
 	text-align: left;
 	font-family: jorvik, serif;
 	font-size: 35px;
+	padding-bottom: 50px;
 }
 
 h3 {
@@ -116,6 +117,7 @@ td
 	position: absolute;
 	right: 10px;
 	top: 20px;
+    width: 100px;
 }
 .imageSlide{
 	width:100%;
