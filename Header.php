@@ -33,10 +33,15 @@
 							<li class="active"><a href="empruntHistorique.php">Historique</a></li>
 						</ul>
 						</li>
-						<li class="active"><a href="livreGestion.php">Livre</a></li>
+						<li class="has-dropdown active"><a href="#">Livres / exemplaires</a>
+						<ul class="dropdown">
+							<li class="active"><a  href="livreGestion.php">Livre</a></li>
+							<li class="active"><a  href="statsExGestion.php">Exemplaires</a></li>
+						</ul>
+						</li>
 						<li class="active"><a href="adherentGestion.php">Adhérent</a></li>
 						<li class="active"><a href="auteurGestion.php">Auteur</a></li>
-						<li class="active"><a href="statGestion.php">Infos</a></li>
+						<li class="active"><a href="statsExGestion.php">Infos</a></li>
 					<?php endif; ?>
 					</ul>
 

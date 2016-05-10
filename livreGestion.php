@@ -20,6 +20,8 @@ if(isset( $_SESSION['messageError'])): ?>
     unset( $_SESSION['messageError']);
 endif; ?>
 
+
+<!--Livres-->
 <section>
     <h1>Gestion des livres</h1>
     <div class="row">

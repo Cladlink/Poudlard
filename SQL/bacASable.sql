@@ -12,3 +12,6 @@ JOIN OEUVRE ON EXEMPLAIRE.idOeuvre = OEUVRE.idOeuvre
 WHERE EMPRUNT.dateRendu IS NULL
 AND adherent.idAdherent = 1
 ORDER BY ADHERENT.nomAdherent;
+
+
+INSERT INTO EMPRUNT VALUES (45, 60, '2015-05-05', null);

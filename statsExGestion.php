@@ -21,11 +21,11 @@ if(isset( $_SESSION['messageError'])): ?>
 endif; ?>
 
 <section>
-    <h1>Statistiques</h1>
+    <h1>Exemplaires</h1>
     <div class="row">
         <article class="panel large-12 medium-12 small-12 columns" >
-            <h2>Rechercher dans exemplaire</h2>
-            <form action="statGestion.php" method="post">
+            <h2>Rechercher dans les exemplaires</h2>
+            <form action="statsExGestion.php" method="post">
                 <div class="row">
                     <div class="large-4 medium-4 small-4 columns">
                         Afficher les exemplaires dont l'état est :
