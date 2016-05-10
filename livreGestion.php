@@ -69,9 +69,9 @@ endif; ?>
                             $where = $where . " AND AUTEUR.nomAuteur LIKE \"" . htmlentities($_POST['nomAuteur']) . "%\"";
                     if (!empty($_POST['dateParution']))
                         if ($where == "WHERE")
-                            $where = $where . " OEUVRE.dateParutionOeuvre LIKE \"" . htmlentities($_POST['dateParution']) . "%\"";
+                            $where = $where . " YEAR(OEUVRE.dateParutionOeuvre) LIKE YEAR(\"" . htmlentities($_POST['dateParution']) . "%\")";
                         else
-                            $where = $where . " AND OEUVRE.dateParutionOeuvre LIKE \"" . htmlentities($_POST['dateParution']) . "%\"";
+                            $where = $where . " AND YEAR(OEUVRE.dateParutionOeuvre) LIKE YEAR(\"" . htmlentities($_POST['dateParution']) . "%\")";
                 }
 
                 $ma_commande_SQL = "SELECT COUNT(EXEMPLAIRE.idExemplaire) as nbExemplaire,

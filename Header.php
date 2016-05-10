@@ -41,7 +41,7 @@
 						</li>
 						<li class="active"><a href="adherentGestion.php">Adhérent</a></li>
 						<li class="active"><a href="auteurGestion.php">Auteur</a></li>
-						<li class="active"><a href="statsExGestion.php">Infos</a></li>
+						<li class="active"><a href="statsGestion.php">Statistiques</a></li>
 					<?php endif; ?>
 					</ul>
 

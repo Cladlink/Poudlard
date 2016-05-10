@@ -105,7 +105,8 @@ endif; ?>
                 }
                 else
                 {
-                    $ma_commande_SQL = "SELECT EMPRUNT.idExemplaire, EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt, ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax
+                    $ma_commande_SQL = "SELECT EMPRUNT.idExemplaire, EMPRUNT.idAdherent, EMPRUNT.idExemplaire, ADHERENT.nomAdherent, OEUVRE.titreOeuvre, EMPRUNT.dateEmprunt,
+                                              ADDDATE(EMPRUNT.dateEmprunt, INTERVAL 45 DAY) as dateRenduMax, IF( ((DATEDIFF(curdate(), dateEmprunt) *0.5)<90), DATEDIFF(curdate(), dateEmprunt)* 0.5, 90) as dette
                                         FROM EMPRUNT
                                         JOIN ADHERENT
                                           ON EMPRUNT.idAdherent = ADHERENT.idAdherent
@@ -130,6 +131,7 @@ endif; ?>
                         <th>Livre emprunté</th>
                         <th>Date d'emprunt</th>
                         <th>Date de rendu maxi</th>
+                        <th>Dette</th>
                     </tr>
 
                     <?php foreach ($donnees as $row) :
@@ -152,6 +154,7 @@ endif; ?>
                         <td><?= $row['titreOeuvre']; ?></td>
                         <td><?= $dateEmprunt?></td>
                         <td><?= $dateRenduMax?></td>
+                        <td><?= $row['dette']; ?></td>
                         <td><a href="<?= $addRendu ?>"><img class="icone" src="img/livreRendu.png" alt="livre ouvert avec plume"></td>
                         </tr>
                     <?php endforeach; ?>
