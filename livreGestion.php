@@ -50,6 +50,7 @@ endif; ?>
         <article class=" panel large-12 medium-12 small-12 columns">
             <a href="livreAdd.php"><img class="imagePlus" src="img/ajouter.png" alt="plus sur fond vert"/></a>
             <h2 >Liste des livres</h2>
+            <a href="statsExGestion.php">Etat général des exemplaires</a>
             <?php
             if(isset($_POST)
                 && isset($_POST['titreLivre'])
