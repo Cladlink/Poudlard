@@ -158,6 +158,7 @@ endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 </table>
+
             </article>
         </div>
     </section>
