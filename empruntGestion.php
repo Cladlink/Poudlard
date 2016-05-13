@@ -147,7 +147,6 @@ endif; ?>
                         $dateEmprunt = $dateE['day'] . "/" . $dateE['month'] . "/" . $dateE['year'];
                         $dateR = date_parse($row['dateRenduMax']);
                         $dateRenduMax = $dateR['day'] . "/" . $dateR['month'] . "/" . $dateR['year'];
-                        echo date_diff(date_create(date("Y-m-d")), date_create($row['dateRenduMax']))->format('%a');
                         ?><tr>
                         <td><?= $row['idExemplaire']; ?></td>
                         <td <?php if( (date_diff(date_create(date("Y-m-d")), date_create($row['dateRenduMax']))->format('%a')) > 45) echo ' class ="redBackground" ';?> > <?= $row['nomAdherent']; ?></td>
