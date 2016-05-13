@@ -25,7 +25,7 @@ endif; ?>
     <div class="row">
         <article class="panel large-12 medium-12 small-12 columns" >
             <h2>Rechercher dans les exemplaires</h2>
-            <form action="statsExGestion.php" method="post">
+            <form action="exemplaireEtat.php" method="post">
                 <div class="row">
                     <div class="large-4 medium-4 small-4 columns">
                         Afficher les exemplaires dont l'état est :

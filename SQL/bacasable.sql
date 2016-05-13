@@ -95,3 +95,10 @@ FROM    ADHERENT
   LEFT JOIN emprunt
     ON adherent.idAdherent = emprunt.idAdherent
 GROUP BY adherent.idAdherent;
+
+  SELECT  count(DISTINCT adherent.idAdherent) as adh,
+          count(DISTINCT exemplaire.idExemplaire) as exe,
+          count(DISTINCT oeuvre.idOeuvre) as oeu,
+          count(DISTINCT auteur.idAuteur) as aut,
+          count(DISTINCT emprunt.idAdherent) as emp
+    FROM ADHERENT, exemplaire, oeuvre, auteur, emprunt;

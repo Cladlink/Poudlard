@@ -18,6 +18,7 @@
     <file url="file://$PROJECT_DIR$/empruntHistorique.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/empruntRendu.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/exemplaireAdd.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/exemplaireEtat.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/exemplaireGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/exemplaireSupprimer.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/exemplaireUpdate.php" dialect="MySQL" />
@@ -25,7 +26,6 @@
     <file url="file://$PROJECT_DIR$/livreGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/livreSupprimer.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/livreUpdate.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/statsExGestion.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/statsGestion.php" dialect="MySQL" />
   </component>
 </project>
